@@ -29,7 +29,7 @@ app.controller('myCtrl',
 
         //获取在线学习学分
         function getCredit(id) {
-            $http.get("https://dangjain.ishoubei.com/cadre/type")
+            $http.get("https://dangjain.ishoubei.com:8443/cadre/type")
                 .then(function (res) {
                     const credit = res.data.rows.find(function (item) {
                         return item.type_id === Number(id);
@@ -44,7 +44,7 @@ app.controller('myCtrl',
             console.log('edit')
             $http({
                 method: 'post',
-                url: 'https://dangjain.ishoubei.com/cadre/type',
+                url: 'https://dangjain.ishoubei.com:8443/cadre/type',
                 data: $.param(data),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {

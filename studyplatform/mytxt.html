@@ -287,7 +287,7 @@
 
                 //拦截这两个，其他的不拦截,调用备份
                 if (action == 'uploadimage' || action == 'uploadfile') {
-                    return "https://dangjain.ishoubei.com/upload";
+                    return "https://dangjain.ishoubei.com:8443/upload";
                 } else{
                     return this._bkGetActionUrl.call(this, action);
                 }
@@ -302,7 +302,7 @@
             });
 
             $scope.load=function () {
-                $http.get("https://dangjain.ishoubei.com/article/"+$scope.article_id)
+                $http.get("https://dangjain.ishoubei.com:8443/article/"+$scope.article_id)
                     .then(function (res) {
                         $scope.lists=res.data;
                         $scope.type_name=res.data.type_name;
@@ -360,7 +360,7 @@
                 var form = document.getElementById('form1'),
                     formData = new FormData(form);
                 $.ajax({
-                    url:"https://dangjain.ishoubei.com/upload",
+                    url:"https://dangjain.ishoubei.com:8443/upload",
                     type:"post",
                     data:formData,
                     processData:false,
@@ -369,7 +369,7 @@
                         if(res.url){
                             fileurl = res.url
                             console.log($scope.coverjiu)
-                            var httpurl="https://dangjain.ishoubei.com"
+                            var httpurl="https://dangjain.ishoubei.com:8443"
                             $scope.coverjiu = httpurl+""+fileurl
                             $("#cover_img").attr("src", $scope.coverjiu)
                             console.log($scope.coverjiu)
@@ -388,9 +388,9 @@
 
             $scope.subtijiao=function () {
 
-                var httpurl="https://dangjain.ishoubei.com"
+                var httpurl="https://dangjain.ishoubei.com:8443"
                 var imageurl=httpurl+""+fileurl
-                   if(imageurl="https://dangjain.ishoubei.com"){
+                   if(imageurl="https://dangjain.ishoubei.com:8443"){
                        imageurl=$scope.coverjiu
                    }
 
@@ -407,7 +407,7 @@
                     urls:$scope.urls
                 };
 
-                var url = "https://dangjain.ishoubei.com/article/"+$scope.article_id;
+                var url = "https://dangjain.ishoubei.com:8443/article/"+$scope.article_id;
                 var transFn = function (data) { return $.param(data) },
                     postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
                 $http.post(url,$scope.data1,postCfg).success(function (res) {

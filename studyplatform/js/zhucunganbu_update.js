@@ -23,7 +23,7 @@ app.controller('myCtrl',
                     console.log($scope.weidu)
                     $http({
                         method:'post',
-                        url:'https://dangjain.ishoubei.com/cadre',
+                        url:'https://dangjain.ishoubei.com:8443/cadre',
                         data:{
                             user_id:$scope.user_id,
                             longitude:Number($scope.jingdu),

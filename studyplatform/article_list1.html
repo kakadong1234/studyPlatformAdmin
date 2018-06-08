@@ -303,7 +303,7 @@
             console.log($scope.article_id)
             console.log($scope.type_id)
             $scope.load=function(){
-                $http.get("https://dangjain.ishoubei.com/article/"+$scope.article_id)
+                $http.get("https://dangjain.ishoubei.com:8443/article/"+$scope.article_id)
                     .then(function (res) {
                         $scope.type_name=res.data.type_name
                         $scope.title=res.data.title

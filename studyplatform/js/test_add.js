@@ -11,7 +11,7 @@ app.controller('myCtrl',
         $scope.user_id="142606654632975259";
         $scope.load=function () {
             //获取标签
-            $http.get("https://dangjain.ishoubei.com/exam/tags")
+            $http.get("https://dangjain.ishoubei.com:8443/exam/tags")
                 .then(function (res) {
                     $scope.tagszu=res.data.rows
                     console.log( $scope.tagszu[0])
@@ -32,7 +32,7 @@ app.controller('myCtrl',
             $scope.data1 = {
                 et_name: $scope.et_name,
             };
-            var url = "https://dangjain.ishoubei.com/exam/tags";
+            var url = "https://dangjain.ishoubei.com:8443/exam/tags";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {
@@ -63,7 +63,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com/exam/question";
+            var url = "https://dangjain.ishoubei.com:8443/exam/question";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {
@@ -93,7 +93,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com/exam/question";
+            var url = "https://dangjain.ishoubei.com:8443/exam/question";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {

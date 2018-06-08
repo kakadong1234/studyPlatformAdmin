@@ -10,7 +10,7 @@ app.controller('myCtrl',
         console.log($scope.pd_id)
         console.log($scope.pb_pattern)
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com/party/"+$scope.pd_id)
+            $http.get("https://dangjain.ishoubei.com:8443/party/"+$scope.pd_id)
                 .then(function (res) {
                     $scope.jianjie=res.data.pb_desc
                     $scope.mingchen=res.data.pb_name

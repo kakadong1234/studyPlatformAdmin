@@ -16,7 +16,7 @@ app.controller('myCtrl',
         console.log($scope.pb_pattern)
         $scope.load=function(){
            if ($scope.fenlei=='biubiu1'){
-               $http.get("https://dangjain.ishoubei.com/party/"+$scope.pd_id)
+               $http.get("https://dangjain.ishoubei.com:8443/party/"+$scope.pd_id)
                    .then(function (res) {
                        $scope.pb_desc=res.data.pb_desc
                        $scope.pb_name=res.data.pb_name
@@ -28,14 +28,14 @@ app.controller('myCtrl',
 
                $scope.deleteClick=function (id) {
                    console.log(id)
-                   $http.delete("https://dangjain.ishoubei.com/party/"+id)
+                   $http.delete("https://dangjain.ishoubei.com:8443/party/"+id)
                        .then(function (res) {
                            alert("确认删除？");
                            window.location.href="flags_piao.html"
                        })
                }
            }else if($scope.fenlei=='biubiu2'){
-               $http.get("https://dangjain.ishoubei.com/party/"+$scope.pd_id)
+               $http.get("https://dangjain.ishoubei.com:8443/party/"+$scope.pd_id)
                    .then(function (res) {
                        $scope.pb_desc=res.data.pb_desc
                        $scope.pb_name=res.data.pb_name
@@ -46,7 +46,7 @@ app.controller('myCtrl',
                    });
 
                $scope.deleteClick=function (id) {
-                   $http.delete("https://dangjain.ishoubei.com/party/"+id)
+                   $http.delete("https://dangjain.ishoubei.com:8443/party/"+id)
                        .then(function (res) {
                            alert("确认删除？");
                            window.location.href="flags_piao.html"
@@ -54,7 +54,7 @@ app.controller('myCtrl',
                }
            }else if($scope.fenlei=='biubiu3'){
                $scope.deleteClick=function (id) {
-                   $http.delete("https://dangjain.ishoubei.com/cadre/"+id)
+                   $http.delete("https://dangjain.ishoubei.com:8443/cadre/"+id)
                        .then(function (res) {
                            alert("确认删除？");
                            window.location.href="flags_piao.html"

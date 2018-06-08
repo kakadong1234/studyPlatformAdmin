@@ -30,7 +30,7 @@ app.controller('myCtrl',
              // arry=[[26.549837,104.955139],[26.622908,104.981918],[26.637025,104.718246],[26.503145,104.775925],[26.457050,104.813004],[26.517892,104.699707],[26.499458,104.974365],[26.690410,104.797211],[26.461967,104.654388],[26.386949,105.011444],[26.199806,105.498962],[26.175159,104.968872]]
 
             //党建示范点标记
-            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=1&page="+$scope.page)
+            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=1&page="+$scope.page)
                 .then(function (res) {
                     var list=[];
                     $scope.listsshifandian=res.data.rows;
@@ -41,7 +41,7 @@ app.controller('myCtrl',
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=1&page="+a)
+                            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=1&page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([resp.data.rows[i].latitude, resp.data.rows[i].longitude,resp.data.rows[i].pb_id, resp.data.rows[i].pb_name]);
@@ -64,7 +64,7 @@ app.controller('myCtrl',
                 });
 
             //党建示范点标记
-            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=0&page="+$scope.page)
+            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=0&page="+$scope.page)
                 .then(function (res) {
                     var list1=[];
                     $scope.listszhibu=res.data.rows;
@@ -92,7 +92,7 @@ app.controller('myCtrl',
 
 
             //驻村干部
-            $http.get("https://dangjain.ishoubei.com/cadre?page="+$scope.page)
+            $http.get("https://dangjain.ishoubei.com:8443/cadre?page="+$scope.page)
                 .then(function (res) {
                     var list1=[];
                     $scope.listsganbu=res.data.rows;
@@ -104,7 +104,7 @@ app.controller('myCtrl',
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com/cadre?page="+a)
+                            $http.get("https://dangjain.ishoubei.com:8443/cadre?page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list1.push([resp.data.rows[i].latitude, resp.data.rows[i].longitude,resp.data.rows[i].user_id, resp.data.rows[i].user_name, $scope.lists[i].created]);

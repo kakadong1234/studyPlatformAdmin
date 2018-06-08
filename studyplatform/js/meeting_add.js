@@ -30,7 +30,7 @@ app.controller('myCtrl',
                 type_id:Number($scope.type_id),
             };
 
-            var url = "https://dangjain.ishoubei.com/report/meeting";
+            var url = "https://dangjain.ishoubei.com:8443/report/meeting";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {

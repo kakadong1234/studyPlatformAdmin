@@ -9,7 +9,7 @@ app.controller('myCtrl',
             getshuju(22);
             //获取数据api
             function getshuju(type) {
-                $http.get("https://dangjain.ishoubei.com/article?type_id="+type)
+                $http.get("https://dangjain.ishoubei.com:8443/article?type_id="+type)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         console.log("文章ID："+$scope.lists.article_id)
@@ -29,7 +29,7 @@ app.controller('myCtrl',
                 console.log(id)
                 // var data ={article_id:article_id}
                 // $.ajax({
-                //     url:"https://dangjain.ishoubei.com/article/",
+                //     url:"https://dangjain.ishoubei.com:8443/article/",
                 //     type:"delete",
                 //     contentType:"application/json",
                 //     dataType:"json",
@@ -43,7 +43,7 @@ app.controller('myCtrl',
                 //     }
                 // });
                 alert("确定删除？")
-                $http.post("https://dangjain.ishoubei.com/article/del/"+id)
+                $http.post("https://dangjain.ishoubei.com:8443/article/del/"+id)
                     .then(function (res) {
                         console.log("已删除")
                         window.location.href='home_teach.html'

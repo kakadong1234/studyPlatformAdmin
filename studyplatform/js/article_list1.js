@@ -8,7 +8,7 @@ app.controller('myCtrl',
         $scope.article_id=Request.article_id
         console.log($scope.article_id)
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com/article?article_id="+$scope.article_id)
+            $http.get("https://dangjain.ishoubei.com:8443/article?article_id="+$scope.article_id)
                 .then(function (res) {
                     $scope.lists=res.data.rows;
                     $scope.type_name=$scope.lists[0].type_name;

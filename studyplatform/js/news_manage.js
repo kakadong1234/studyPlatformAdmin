@@ -25,7 +25,7 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(pageID) {
-                $http.get("https://dangjain.ishoubei.com/news?page="+pageID)
+                $http.get("https://dangjain.ishoubei.com:8443/news?page="+pageID)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         $scope.total=res.data.total;
@@ -39,7 +39,7 @@ app.controller('myCtrl',
                 var id = Number(article_id)
                 console.log(id)
                 alert("确定删除？")
-                $http.post("https://dangjain.ishoubei.com/news/del/"+article_id)
+                $http.post("https://dangjain.ishoubei.com:8443/news/del/"+article_id)
                     .then(function (res) {
                         console.log("已删除")
                         window.location.href="news_manage.html"
@@ -55,7 +55,7 @@ app.controller('myCtrl',
                         recommend: 1,
                     };
                     console.log($scope.data1)
-                    var url = "https://dangjain.ishoubei.com/news/"+article_id;
+                    var url = "https://dangjain.ishoubei.com:8443/news/"+article_id;
                     var transFn = function (data) { return $.param(data) },
                         postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
                     $http.post(url,$scope.data1,postCfg).success(function (res) {
@@ -67,7 +67,7 @@ app.controller('myCtrl',
                         recommend: 0,
                     };
                     console.log($scope.data1)
-                    var url = "https://dangjain.ishoubei.com/news/"+article_id;
+                    var url = "https://dangjain.ishoubei.com:8443/news/"+article_id;
                     var transFn = function (data) { return $.param(data) },
                         postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
                     $http.post(url,$scope.data1,postCfg).success(function (res) {

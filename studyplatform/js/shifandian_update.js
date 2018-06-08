@@ -9,7 +9,7 @@ app.controller('myCtrl',
         $scope.aaa=decodeURI(Request.pb_pattern)
         console.log( $scope.id)
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com/party/"+$scope.id)
+            $http.get("https://dangjain.ishoubei.com:8443/party/"+$scope.id)
                 .then(function (res) {
                     $scope.jianjie=res.data.pb_desc
                     $scope.mingchen=res.data.pb_name
@@ -24,7 +24,7 @@ app.controller('myCtrl',
 
             $http({
                 method:'post',
-                url:'https://dangjain.ishoubei.com/party/'+$scope.id,
+                url:'https://dangjain.ishoubei.com:8443/party/'+$scope.id,
                 data:{
                     pb_name:$scope.mingchen,
                     pb_address:$scope.dizhi,
