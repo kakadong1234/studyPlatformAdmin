@@ -27,7 +27,13 @@ app.controller('myCtrl',
             function getshuju(pageID,type_id) {
                 $http.get("https://dangjain.ishoubei.com:8443/article?page="+pageID+"&type_id="+type_id)
                     .then(function (res) {
-                        $scope.lists=res.data.rows;
+                        $scope.lists=res.data.rows.map(function(item){
+                            console.log(item)
+                            if(item.type_name === '习近平新时代中国特色社会主义思想'){
+                                item.type_name = '特别推荐'
+                            }
+                            return item;
+                        });
                         $scope.total=res.data.total;
                         $scope.pagesLists=Math.ceil($scope.total/10);
 

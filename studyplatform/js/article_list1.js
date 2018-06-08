@@ -12,6 +12,9 @@ app.controller('myCtrl',
                 .then(function (res) {
                     $scope.lists=res.data.rows;
                     $scope.type_name=$scope.lists[0].type_name;
+                    if($scope.type_name === '习近平新时代中国特色社会主义思想'){
+                        $scope.type_name = '特别推荐'
+                    }
                     $scope.title=$scope.lists[0].title;
                     $scope.created=$scope.lists[0].created;
                     $scope.content=$scope.lists[0].content;

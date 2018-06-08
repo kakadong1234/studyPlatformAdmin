@@ -6,12 +6,33 @@ app.controller('myCtrl',
         localStorage.setItem("login_user_name",$scope.username);
         $scope.login_user_name=localStorage.getItem("login_user_name");
         $scope.load=function(){
-            getshuju(22);
+            getshuju(23);
             //获取数据api
             function getshuju(type) {
                 $http.get("https://dangjain.ishoubei.com:8443/article?type_id="+type)
                     .then(function (res) {
-                        $scope.lists=res.data.rows;
+                        $scope.lists=res.data.rows.map(function(item){
+                            console.log(item)
+                            if(item.type_name === '党建'){
+                                item.type_name = '办公'
+                            }
+                            if(item.type_name === '农技'){
+                                item.type_name = '职业'
+                            }
+                            if(item.type_name === '教育'){
+                                item.type_name = '产品'
+                            }
+                            if(item.type_name === '法律'){
+                                item.type_name = '生活'
+                            }
+                            if(item.type_name === '科技'){
+                                item.type_name = '工具'
+                            }
+                            if(item.type_name === '其它'){
+                                item.type_name = '其他'
+                            }
+                            return item;
+                        });;
                         console.log("文章ID："+$scope.lists.article_id)
 
                         // $scope.total=res.data.total;
