@@ -30,9 +30,10 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(leixing) {
-                $http.get("https://dangjain.ishoubei.com:8443/exam/question?eqt_id="+leixing)
+                $http.get("https://dangjain.ishoubei.com:8443/exam/question?eqt_id="+leixing + "&limit=100")
                     .then(function (res) {
                         $scope.lists=res.data.rows;
+                        console.log($scope.lists)
                         $scope.total=res.data.total;
                         $scope.pagesLists=Math.ceil($scope.total/10);
                     });
