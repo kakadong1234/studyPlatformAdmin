@@ -22,7 +22,7 @@ app.controller('myCtrl',
             }
             //获取数据api
             function getshuju(pageID) {
-                $http.get("https://dangjain.ishoubei.com:8443/party?page="+$scope.page)
+                $http.get("https://dangjain.ishoubei.com/party?page="+$scope.page)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         $scope.total=res.data.total;
@@ -37,7 +37,7 @@ app.controller('myCtrl',
                 var id = Number(pb_id)
                 console.log(id)
                 alert("确定删除？")
-                $http.post("https://dangjain.ishoubei.com:8443/party/del/"+id)
+                $http.post("https://dangjain.ishoubei.com/party/del/"+id)
                     .then(function (res) {
                         console.log("已删除")
                         window.location.href="flags_people.html"

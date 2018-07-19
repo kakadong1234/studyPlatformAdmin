@@ -57,7 +57,7 @@ app.controller('myCtrl',
             var id = Number(id)
             console.log(id)
             alert("确定删除？")
-            $http.post("https://dangjain.ishoubei.com:8443/exam/plan/del/" + id)
+            $http.post("https://dangjain.ishoubei.com/exam/plan/del/" + id)
                 .then(function (res) {
                     console.log("已删除")
                     window.location.reload()
@@ -113,8 +113,7 @@ app.controller('myCtrl',
                 ep_type: $scope.ep_type,
                 eps_time: eps_time,
                 epe_time: epe_time,
-                // ep_limit: Number($scope.ep_limit),
-                ep_limit: 90,
+                ep_limit: Number($scope.ep_limit),
                 tags: tags,
             }, questionSetting)
             console.log(data)
@@ -146,7 +145,7 @@ app.controller('myCtrl',
         //获取考试配置列表
         function getExamPageList(pageID) {
             var pageCount = 20
-            $http.get("https://dangjain.ishoubei.com:8443/exam/plan?page=" + pageID + "&limit=" + pageCount)
+            $http.get("https://dangjain.ishoubei.com/exam/plan?page=" + pageID + "&limit=" + pageCount)
                 .then(function (res) {
                     //TODO: 接口异常???
                     $scope.total = res.data.total
@@ -169,7 +168,7 @@ app.controller('myCtrl',
             console.log(data)
             $http({
                 method: 'post',
-                url: 'https://dangjain.ishoubei.com:8443/exam/plan',
+                url: 'https://dangjain.ishoubei.com/exam/plan',
                 data: $.param(data),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {
@@ -181,7 +180,7 @@ app.controller('myCtrl',
         function send(id) {
             $http({
                 method: 'post',
-                url: 'https://dangjain.ishoubei.com:8443/exam/plan/pub',
+                url: 'https://dangjain.ishoubei.com/exam/plan/pub',
                 data: $.param({
                     ep_id: id
                 }),
@@ -193,7 +192,7 @@ app.controller('myCtrl',
 
 
         function getTags() {
-            $http.get("https://dangjain.ishoubei.com:8443/exam/tags")
+            $http.get("https://dangjain.ishoubei.com/exam/tags")
                 .then(function (res) {
                     //TODO: 接口异常???
                     $scope.initScopeList = res.data.rows

@@ -3,15 +3,13 @@ app.controller('myCtrl',
     function($scope, $http) {
         var Request = new UrlSearch(); //实例化
         var tagsarry=[];
-        $scope.username=Request.xingming;
-        localStorage.setItem("login_user_name",$scope.username);
-        $scope.login_user_name=localStorage.getItem("login_user_name");
+        $scope.user_id=localStorage.getItem("user_id");
         $scope.isShow=false;
         $scope.eqt_name="判断题";
-        $scope.user_id="142606654632975259";
+        // $scope.user_id="142606654632975259";
         $scope.load=function () {
             //获取标签
-            $http.get("https://dangjain.ishoubei.com:8443/exam/tags")
+            $http.get("https://dangjain.ishoubei.com/exam/tags")
                 .then(function (res) {
                     $scope.tagszu=res.data.rows
                     console.log( $scope.tagszu[0])
@@ -32,7 +30,7 @@ app.controller('myCtrl',
             $scope.data1 = {
                 et_name: $scope.et_name,
             };
-            var url = "https://dangjain.ishoubei.com:8443/exam/tags";
+            var url = "https://dangjain.ishoubei.com/exam/tags";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {
@@ -52,7 +50,7 @@ app.controller('myCtrl',
             console.log($scope.question)
             console.log($scope.answer)
             console.log($scope.tags)
-            // $http.post("https://dangjain.ishoubecoi.m:8443/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
+            // $http.post("https://dangjain.ishoubecoi.m/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
             //     .then(function (res) {
             //            console.log("已添加成功")
             //     });
@@ -63,7 +61,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com:8443/exam/question";
+            var url = "https://dangjain.ishoubei.com/exam/question";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {
@@ -78,7 +76,7 @@ app.controller('myCtrl',
             console.log($scope.question)
             console.log($scope.answer)
             console.log($scope.tags)
-            // $http.post("https://dangjain.ishoubecoi.m:8443/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
+            // $http.post("https://dangjain.ishoubecoi.m/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
             //     .then(function (res) {
             //            console.log("已添加成功")
             //     });
@@ -93,7 +91,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com:8443/exam/question";
+            var url = "https://dangjain.ishoubei.com/exam/question";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {

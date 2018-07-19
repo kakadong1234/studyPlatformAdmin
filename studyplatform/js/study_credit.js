@@ -25,7 +25,7 @@ app.controller('myCtrl',
 
         //获取考试配置列表
         function getCreditPageList() {
-            $http.get("https://dangjain.ishoubei.com:8443/cadre/type")
+            $http.get("https://dangjain.ishoubei.com/cadre/type")
                 .then(function (res) {
                     $scope.lists = res.data.rows;
                     $scope.total = res.data.total;

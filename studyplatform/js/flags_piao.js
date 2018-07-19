@@ -26,10 +26,13 @@ app.controller('myCtrl',
             });
 
             newsget(100)
-            newsdongtai(100)
+            tashanzhiyuget()
+            bannerget()
+
+
 
             //党建示范点标记
-            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=1&page="+$scope.page)
+            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=1&page="+$scope.page)
                 .then(function (res) {
                     var beizhu=[];
                     var list=[]
@@ -45,12 +48,14 @@ app.controller('myCtrl',
                             $scope.listsshifandian[i].pb_address, 
                             $scope.listsshifandian[i].pb_desc,
                             $scope.listsshifandian[i].pb_id,
-                            $scope.listsshifandian[i].pb_phone                            
+                            $scope.listsshifandian[i].pb_phone,
+                            $scope.listsshifandian[i].pb_master,
+                            $scope.listsshifandian[i].pb_details,
                             ])
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=1&page="+a)
+                            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=1&page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([resp.data.rows[i].longitude, resp.data.rows[i].latitude]);
@@ -60,7 +65,9 @@ app.controller('myCtrl',
                                             resp.data.rows[i].pb_address, 
                                             resp.data.rows[i].pb_desc, 
                                             resp.data.rows[i].pb_id,
-                                            resp.data.rows[i].pb_phone  
+                                            resp.data.rows[i].pb_phone,
+                                            resp.data.rows[i].pb_master,
+                                            resp.data.rows[i].pb_details,
                                         ])
                                     }
                                     addMarker(list,beizhu,1)
@@ -91,7 +98,7 @@ app.controller('myCtrl',
 
 
             //党支部分布
-            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=0&page="+$scope.page)
+            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=0&page="+$scope.page)
                 .then(function (res) {
                     var beizhu=[];
                     var list=[]
@@ -108,13 +115,15 @@ app.controller('myCtrl',
                             $scope.listsshifandian[i].pb_address, 
                             $scope.listsshifandian[i].pb_desc, 
                             $scope.listsshifandian[i].pb_id,
-                            $scope.listsshifandian[i].pb_phone     
+                            $scope.listsshifandian[i].pb_phone,
+                            $scope.listsshifandian[i].pb_master,
+                            $scope.listsshifandian[i].pb_details,
                         ]);
                         // beizhu.push([$scope.listsshifandian[i].pb_name, $scope.listsshifandian[i].pb_pattern, $scope.listsshifandian[i].pb_address, $scope.listsshifandian[i].pb_desc, $scope.listsshifandian[i].pb_id])
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com:8443/party?pb_pattern=0&page="+a)
+                            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=0&page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([
@@ -125,7 +134,9 @@ app.controller('myCtrl',
                                             resp.data.rows[i].pb_address, 
                                             resp.data.rows[i].pb_desc, 
                                             resp.data.rows[i].pb_id,
-                                            resp.data.rows[i].pb_phone  
+                                            resp.data.rows[i].pb_phone,
+                                            $scope.listsshifandian[i].pb_master,
+                                            $scope.listsshifandian[i].pb_details,
                                         ]);
                                         // beizhu.push([resp.data.rows[i].pb_name, resp.data.rows[i].pb_pattern, resp.data.rows[i].pb_address, resp.data.rows[i].pb_desc, resp.data.rows[i].pb_id])
                                     }
@@ -155,7 +166,7 @@ app.controller('myCtrl',
 
 
             //驻村干部
-            $http.get("https://dangjain.ishoubei.com:8443/cadre?page="+$scope.page)
+            $http.get("https://dangjain.ishoubei.com/cadre?page="+$scope.page)
                 .then(function (res) {
                     var beizhu=[];
                     var list=[]
@@ -164,15 +175,15 @@ app.controller('myCtrl',
                     var yeshu=Math.ceil($scope.total/10)
                     for (var i = 0; i < $scope.listsshifandian.length; i++) {
                         list.push([$scope.listsshifandian[i].longitude, $scope.listsshifandian[i].latitude]);
-                        beizhu.push([$scope.listsshifandian[i].user_name, $scope.listsshifandian[i].user_id, $scope.listsshifandian[i].created])
+                        beizhu.push([$scope.listsshifandian[i].user_name, $scope.listsshifandian[i].user_id, $scope.listsshifandian[i].pb_desc,$scope.listsshifandian[i].address,])
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com:8443/cadre?page="+a)
+                            $http.get("https://dangjain.ishoubei.com/cadre?page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([resp.data.rows[i].longitude, resp.data.rows[i].latitude]);
-                                        beizhu.push([resp.data.rows[i].user_name, resp.data.rows[i].user_id, resp.data.rows[i].created])
+                                        beizhu.push([resp.data.rows[i].user_name, resp.data.rows[i].user_id, resp.data.rows[i].pb_desc, resp.data.rows[i].address])
                                     }
                                     addMarker(list,beizhu,3)
                                     //控制标记点显示与隐藏
@@ -304,19 +315,20 @@ app.controller('myCtrl',
                         xingmarkers.push(marker);
                         marker.name=beizhu[i][0]
                         marker.id=beizhu[i][1]
-                        marker.created=beizhu[i][2]
+                        marker.jianjie=beizhu[i][2]
+                        marker.dizhi=beizhu[i][3]
                         marker.jingdu=arry[i][0]
                         marker.weidu=arry[i][1]
-                        marker.dizhi="六盘水市区"
+                        // marker.dizhi="六盘水市区"
 
                         //鼠标点击marker弹出自定义的信息窗体
                         AMap.event.addListener(marker, 'click', function(e) {
                             //实例化信息窗体
                             var title = ''+this.name+'',
                                 content = [];
-                            content.push('<img src="./img/a4.jpg">签到地址：'+this.dizhi+'');
-                            content.push('联系方式：'+ '15372383031' +'');
-                            content.push("<a  href='qiandaoxiangqing.html?user_id="+this.id+"&fenlei="+"biubiu3"+"&created="+this.created+"&weidu="+this.weidu+"&jingdu="+this.jingdu+"'>签到详情</a>");
+                            content.push('<img src="./img/a4.jpg">地址：'+this.dizhi+'');
+                            content.push('个人简介：'+ this.jianjie +'');
+                            content.push("<a  href='flags_jianjie.html?user_id="+this.id+"&fenlei="+"biubiu3"+"&created="+this.created+"&weidu="+this.weidu+"&jingdu="+this.jingdu+"'>个人详情</a>");
                             var infoWindow2 = new AMap.InfoWindow({
                                 isCustom: true,  //使用自定义窗体
                                 content: createInfoWindow(title, content.join("<br/>")),
@@ -394,40 +406,64 @@ app.controller('myCtrl',
             }
 
 
-            //他山之玉
-            function newsget(limit) {
-                $http.get("https://dangjain.ishoubei.com:8443/news?limit="+limit)
-                    .then(function (res) {
-                        var newsArry=[]
-                        $scope.lists1=res.data.rows
-                        for(var i=0;i<$scope.lists1.length;i++){
-                            if($scope.lists1[i].recommend==1){
-                                newsArry.push([$scope.lists1[i].title,$scope.lists1[i].article_id])
-                            }
-                            $scope.baba=newsArry
-                        }
-                    });
-            }
-
-
-
             //新闻动态
-            function newsdongtai(limit) {
-                $http.get("https://dangjain.ishoubei.com:8443/news?limit="+limit)
+            function newsget() {
+                var tashanzhiyu=[]
+                var bannerlist=[]
+                var dongtailist=[]
+                $http.get("https://dangjain.ishoubei.com/article?status=5&type_id=41")
                     .then(function (res) {
-                        var newsArry=[]
-                        $scope.lists2=res.data.rows
-                        for(var i=0;i<$scope.lists2.length;i++){
-                            if($scope.lists2[i].recommend==0){
-                                newsArry.push([$scope.lists2[i].title,$scope.lists2[i].article_id])
-                            }
-                            $scope.zyzy=newsArry
-                        }
+                       $scope.showlists=res.data.rows
+                       for (var i=0;i<$scope.showlists.length;i++){
+                           // if($scope.showlists[i].banner==1){
+                           //     bannerlist.push([
+                           //         $scope.showlists[i].article_id, $scope.showlists[i].title
+                           //     ])
+                           //     $scope.bannerlist=bannerlist
+                           //     console.log($scope.bannerlist)
+                           // }
+
+                           // if($scope.showlists[i].recommend==1){
+                           //     tashanzhiyu.push([
+                           //         $scope.showlists[i].article_id, $scope.showlists[i].title
+                           //     ])
+                           //     $scope.tashanzhiyu=tashanzhiyu
+                           //     console.log($scope.tashanzhiyu)
+                           // }
+
+                           for (var m=0;m<$scope.showlists[i].type_ids.length;m++){
+                               if($scope.showlists[i].type_ids[m].type_name=="党建新闻"){
+                                   dongtailist.push([
+                                       $scope.showlists[i].article_id, $scope.showlists[i].title
+                                   ])
+                                   $scope.dongtailist=dongtailist
+                               }
+                           }
+
+                       }
                     });
             }
+
+
+            //banner
+            function bannerget() {
+                $http.get("https://dangjain.ishoubei.com/article?status=5&type_id=45")
+                    .then(function (res) {
+                        $scope.bannerlist=res.data.rows
+                    });
+            }
+
+            //他山之石
+            function tashanzhiyuget() {
+                $http.get("https://dangjain.ishoubei.com/article?status=5&type_id=44")
+                    .then(function (res) {
+                        $scope.tashanzhiyu=res.data.rows
+                    });
+            }
+
 
             $scope.onClick= function (article_id,a) {
-                window.location.href="article_list1.html?article_id="+article_id+"&type_id="+a;
+                window.location.href="article_detail.html?article_id="+article_id+"&type_id="+a;
             }
         }
 

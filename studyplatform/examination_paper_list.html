@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>铜锣湾企业学习平台 | 考试管理列表页 </title>
+    <title>铜锣湾企业学习平台</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -31,45 +31,58 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <h1 style="color: white">铜锣湾企业学习平台</h1>
+                            <h3 style="color: white;font-size: 18px">
+                                 <!-- <img src="img/login.png" style="width: 50px;height: auto"> -->
+                                铜锣湾企业学习平台
+                            </h3>
                         </div>
                         <div class="logo-element">
-                            党建
+                            党建云
                         </div>
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">课程中心</span> <span class="fa arrow"></span></a>
+                        <a href="article_home.html" target="_self"><i class="fa fa-th-large"></i> <span class="nav-label">网上讲习所</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li>
-                                <a href="home.html">特别推荐</a>
-                            </li>
-                            <li>
-                                <a href="home_teach.html">类型推荐</a>
-                            </li>
+                            <li><a href="article_home.html" target="_self">文章管理</a></li>
+                            <li><a href="article_type.html" target="_self">文章类型</a></li>
+                            <!--<li><a href="article_comment.html" target="_self">评论管理</a></li>-->
                         </ul>
                     </li>
-                    <li class="active">
-                        <a href="table_data_tables.html#">
-                            <i class="fa fa-bar-chart-o"></i>
-                            <span class="nav-label">考试中心</span>
-                            <span class="fa arrow"></span>
-                        </a>
+                    <li >
+                        <a href="village_home.html" target="_self"><i class="fa fa-th-large"></i> <span class="nav-label">党建大数据</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <!-- <li>
-                                <a href="graph_flot.html">教学资源</a>
-                            </li> -->
-                            <li class="active">
-                                <a href="examination_paper_list.html">考试管理</a>
-                            </li>
-                            <li><a href="test_manage.html">考试题管理</a></li>
+                            <li><a href="village_home.html" target="_self">党支部管理</a></li>
+                            <li><a href="ganbu_manage.html" target="_self">驻村干部管理</a></li>
+                            <li><a href="flags_piao.html" target="_self">党建地图</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- <li>
+                        <a href="flags_piao.html" target="_self"><i class="fa fa-diamond"></i> <span class="nav-label">党建地图</span></a>
+                    </li> -->
+
+                    <!--<li>-->
+                    <!--<a href="news_manage.html" target="_self"><i class="fa fa-diamond"></i> <span class="nav-label">党建新闻管理</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="three_sessions.html" target="_self"><i class="fa fa-diamond"></i> <span class="nav-label">三会一课</span></a>-->
+                    <!--</li>-->
+                    <li class="active">
+                        <a href="examination_paper_list.html#" target="_self"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">云学习中心</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <!-- <li><a href="graph_flot.html" target="_self">教学资源</a></li> -->
+                            <li class="active"><a href="examination_paper_list.html" target="_self">考试管理</a></li>
+                            <li><a href="test_manage.html" target="_self">考试题管理</a></li>
+                            <li><a href="study_credit_list.html" target="_self">在线学习学分配置</a></li>
+                            <!-- <li><a href="graph_chartjs.html" target="_self">活动开展情况</a></li> -->
                         </ul>
                     </li>
                     <!--<li>-->
-                    <!--<a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">系统管理</span><span class="fa arrow"></span></a>-->
+                    <!--<a href="#" target="_self"><i class="fa fa-wrench"></i> <span class="nav-label">系统管理</span><span class="fa arrow"></span></a>-->
                     <!--<ul class="nav nav-second-level collapse" >-->
-                    <!--<li><a href="#">系统配置</a></li>-->
-                    <!--<li><a href="#">权限管理</a></li>-->
-                    <!--<li><a href="login.html">退出</a></li>-->
+                    <!--<li><a href="#" target="_self">系统配置</a></li>-->
+                    <!--<li><a href="#" target="_self">权限管理</a></li>-->
+                    <!--<li><a href="login.html" target="_self">退出</a></li>-->
                     <!--</ul>-->
                     <!--</li>-->
 
@@ -82,12 +95,12 @@
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="examination_paper_list.html#">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="examination_paper_list.html">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <form role="search" class="navbar-form-custom" >
                             <div class="form-group">
-                                <input type="text" placeholder="搜索..." class="form-control" name="top-search" id="top-search">
+                                <input type="text"  class="form-control" name="top-search" id="top-search">
                             </div>
                         </form>
                     </div>
@@ -119,7 +132,7 @@
                                                     <th style="text-align: center">考试状态</th>
                                                     <th style="text-align: center">考试开始时间</th>
                                                     <th style="text-align: center">考试截止时间</th>
-                                                    <!-- <th style="text-align: center">考试时长(分钟)</th> -->
+                                                    <th style="text-align: center">考试时长(分钟)</th>
                                                     <!-- <th style="text-align: center">考试总分</th> -->
                                                     <th style="text-align: center">考题范围</th>
                                                     <th style="text-align: center">操作</th>
@@ -132,7 +145,7 @@
                                                     <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.statusTxt}}</td>
                                                     <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.eps_time}}</td>
                                                     <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.epe_time}}</td>
-                                                    <!-- <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.ep_limit}}</td> -->
+                                                    <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.ep_limit}}</td>
                                                     <!-- <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.score}}</td> -->
                                                     <td style="text-align: center" ng-click="onClick(examPage.ep_id)">{{examPage.tags}}</td>
                                                     <td style="text-align: center">
@@ -151,9 +164,9 @@
 
                                         </table>
 
-                                        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate" style="float: right" ng-hide="pagesLists<=1">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate" style="float: right" ng-hide="pagesLists<=0">
                                             <ul class="pagination">
-                                                <li class="paginate_button previous disabled" id="DataTables_Table_0_previous">
+                                                <li class="paginate_button previous" id="DataTables_Table_0_previous">
                                                     <a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" ng-click="upOnClick()">上一页</a>
                                                 </li>
                                                 <li class="paginate_button active">

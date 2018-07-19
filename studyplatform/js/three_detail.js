@@ -11,7 +11,7 @@ app.controller('myCtrl',
         console.log( $scope.ir_id)
         $scope.load=function(){
 
-            $http.get("https://dangjain.ishoubei.com:8443/report/meeting/"+ $scope.ir_id)
+            $http.get("https://dangjain.ishoubei.com/report/meeting/"+ $scope.ir_id)
                 .then(function (res) {
                     $scope.user_id=res.data.user_id
                     $scope.address=res.data.address

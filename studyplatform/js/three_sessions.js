@@ -23,7 +23,7 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(pageID) {
-                $http.get("https://dangjain.ishoubei.com:8443/report/meeting?page="+pageID)
+                $http.get("https://dangjain.ishoubei.com/report/meeting?page="+pageID)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         console.log($scope.lists)

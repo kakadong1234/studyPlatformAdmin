@@ -7,20 +7,19 @@ app.controller('myCtrl',
         $scope.login_user_name=localStorage.getItem("login_user_name");
         $scope.pd_id=Request.pd_id
         $scope.pb_pattern=Request.pb_pattern
-        console.log($scope.pd_id)
-        console.log($scope.pb_pattern)
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com:8443/party/"+$scope.pd_id)
+            $http.get("https://dangjain.ishoubei.com/party/"+$scope.pd_id)
                 .then(function (res) {
                     $scope.jianjie=res.data.pb_desc
+                    $scope.dianhua=res.data.pb_phone
+                    $scope.shuji=res.data.pb_master
                     $scope.mingchen=res.data.pb_name
                     $scope.jingdu=res.data.longitude
                     $scope.weidu=res.data.latitude
                     $scope.dizhi=res.data.pb_address
                     $scope.pb_id=res.data.pb_id
-                    $scope.content=HTMLDecode(res.data.pb_desc);
+                    $scope.content=HTMLDecode(res.data.pb_details);
                     $sce.trustAsHtml( $scope.content);
-                    console.log($scope.content)
                     function HTMLDecode(text) {
                         var temp = document.createElement("div");
                         temp.innerHTML = text;

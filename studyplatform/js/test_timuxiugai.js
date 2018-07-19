@@ -2,10 +2,10 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl',
     function($scope, $http) {
         var Request = new UrlSearch(); //实例化
-        $scope.username=Request.xingming;
-        localStorage.setItem("login_user_name",$scope.username);
-        $scope.login_user_name=localStorage.getItem("login_user_name");
-        $scope.user_id="142606654632975259";
+        // $scope.username=Request.xingming;
+        // localStorage.setItem("login_user_name",$scope.username);
+        $scope.user_id=localStorage.getItem("user_id");
+        // $scope.user_id="142606654632975259";
         $scope.eqt_name=decodeURI(Request.eqt_name)
         $scope.eq_id=decodeURI(Request.eq_id)
         $scope.question=decodeURI(Request.question)
@@ -23,7 +23,7 @@ app.controller('myCtrl',
             console.log($scope.answer)
             console.log($scope.tags)
             console.log($scope.eq_id)
-            // $http.post("https://dangjain.ishoubecoi.m:8443/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
+            // $http.post("https://dangjain.ishoubecoi.m/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
             //     .then(function (res) {
             //            console.log("已添加成功")
             //     });
@@ -34,7 +34,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com:8443/exam/question/"+$scope.eq_id;
+            var url = "https://dangjain.ishoubei.com/exam/question/"+$scope.eq_id;
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {
@@ -50,7 +50,7 @@ app.controller('myCtrl',
             console.log($scope.question)
             console.log($scope.answer)
             console.log($scope.tags)
-            // $http.post("https://dangjain.ishoubecoi.m:8443/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
+            // $http.post("https://dangjain.ishoubecoi.m/exam/question?eqt_id="+1+"&question="+$scope.question+"&answer="+$scope.answer)
             //     .then(function (res) {
             //            console.log("已添加成功")
             //     });
@@ -65,7 +65,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com:8443/exam/question/"+$scope.eq_id;
+            var url = "https://dangjain.ishoubei.com/exam/question/"+$scope.eq_id;
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {

@@ -12,28 +12,29 @@ app.controller('myCtrl',
             $scope.downOnClick = function () {
                 if($scope.page<$scope.pagesLists){
                     $scope.page = $scope.page+1;
-                    getshuju($scope.page);
+                    getshuju();
                 }
             }
             $scope.upOnClick = function () {
                 if($scope.page>1) {
                     $scope.page = $scope.page - 1;
-                    getshuju($scope.page);
+                    getshuju();
                 }
             }
             
             $scope.onleixingClick=function () {
                 console.log($scope.leixing)
-                getshuju($scope.leixing);
+                $scope.page=1;
+                getshuju();
             }
 
 
             //获取数据api
-            function getshuju(leixing) {
-                $http.get("https://dangjain.ishoubei.com:8443/exam/question?eqt_id="+leixing + "&limit=100")
+            function getshuju() {
+              
+                $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id="+ $scope.leixing + "&page="+ $scope.page)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
-                        console.log($scope.lists)
                         $scope.total=res.data.total;
                         $scope.pagesLists=Math.ceil($scope.total/10);
                     });
@@ -47,7 +48,7 @@ app.controller('myCtrl',
             var id = Number(eq_id)
             console.log(id)
             alert("确定删除？")
-            $http.post("https://dangjain.ishoubei.com:8443/exam/question/del/"+id)
+            $http.post("https://dangjain.ishoubei.com/exam/question/del/"+id)
                 .then(function (res) {
                     console.log("已删除")
                     window.location.href='test_manage.html'

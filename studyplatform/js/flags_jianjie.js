@@ -1,15 +1,34 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngSanitize']);
 app.controller('myCtrl',
-    function($scope, $http) {
+    function($scope, $http, $sce) {
         var Request = new UrlSearch(); //实例化
         $scope.username=Request.xingming;
         localStorage.setItem("login_user_name",$scope.username);
         $scope.login_user_name=localStorage.getItem("login_user_name");
+        $scope.user_id=Request.user_id
 
         $scope.load=function(){
-
-
+            $http.get("https://dangjain.ishoubei.com/cadre/"+$scope.user_id)
+                .then(function (res) {
+                    $scope.jianjie=res.data.pb_desc
+                    $scope.mingchen=res.data.user_name
+                    $scope.jingdu=res.data.longitude
+                    $scope.weidu=res.data.latitude
+                    $scope.dizhi=res.data.address
+                    $scope.period=res.data.period
+                    $scope.content=HTMLDecode(res.data.pb_details);
+                    $sce.trustAsHtml( $scope.content);
+                    function HTMLDecode(text) {
+                        var temp = document.createElement("div");
+                        temp.innerHTML = text;
+                        var output = temp.innerText || temp.textContent;
+                        temp = null;
+                        return output;
+                    }
+                });
         }
+
+
 
 
         function UrlSearch() {

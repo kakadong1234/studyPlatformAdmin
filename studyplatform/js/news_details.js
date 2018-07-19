@@ -39,7 +39,7 @@ app.controller('myCtrl',
             //     var id = Number(article_id)
             //     console.log(id)
             //     alert("确定删除？")
-            //     $http.delete("https://dangjain.ishoubei.com:8443/article/"+article_id)
+            //     $http.delete("https://dangjain.ishoubei.com/article/"+article_id)
             //         .then(function (res) {
             //             console.log("已删除")
             //         })

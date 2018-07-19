@@ -2,10 +2,8 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl',
     function($scope, $http) {
         var Request = new UrlSearch(); //实例化
-        $scope.username=Request.xingming;
-        localStorage.setItem("login_user_name",$scope.username);
-        $scope.login_user_name=localStorage.getItem("login_user_name");
-        $scope.user_id="142606654632975259";
+        $scope.user_id=localStorage.getItem("user_id");
+        // $scope.user_id="142606654632975259";
         $scope.tijiao=function () {
             console.log("新建")
             console.log($scope.mingchen)
@@ -13,7 +11,7 @@ app.controller('myCtrl',
             console.log($scope.weidu)
             $http({
                 method:'post',
-                url:'https://dangjain.ishoubei.com:8443/cadre',
+                url:'https://dangjain.ishoubei.com/cadre',
                 data:{
                     user_id:$scope.user_id,
                     longitude:Number($scope.jingdu),

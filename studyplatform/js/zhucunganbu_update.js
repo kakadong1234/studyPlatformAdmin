@@ -21,19 +21,24 @@ app.controller('myCtrl',
                     console.log($scope.mingchen)
                     console.log($scope.jingdu)
                     console.log($scope.weidu)
-                    $http({
-                        method:'post',
-                        url:'https://dangjain.ishoubei.com:8443/cadre',
-                        data:{
-                            user_id:$scope.user_id,
-                            longitude:Number($scope.jingdu),
-                            latitude:Number($scope.weidu),
-                        },
-                        headers:{'Content-Type': 'application/x-www-form-urlencoded'},
-                    }).success(function(req){
-                        window.location.href="ganbu_manage.html"
-                    })
+                    // $http({
+                    //     method:'post',
+                    //     url:'https://dangjain.ishoubei.com:8443/cadre',
+                    //     data:{
+                    //         user_id:$scope.user_id,
+                    //         longitude:Number($scope.jingdu),
+                    //         latitude:Number($scope.weidu),
+                    //     },
+                    //     headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+                    // }).success(function(req){
+                    //     window.location.href="ganbu_manage.html"
+                    // })
 
+
+                    $http.post("https://dangjain.ishoubei.com/cadre?user_id="+$scope.user_id+"&longitude="+Number($scope.jingdu)+"&latitude="+Number($scope.weidu))
+                        .then(function (res) {
+                            window.location.href="ganbu_manage.html"
+                        })
                 }
 
 
