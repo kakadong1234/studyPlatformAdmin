@@ -187,7 +187,6 @@ app.controller('myCtrl',
                 for(var i=0; i<$scope.removeUserIdList.length; i++){
                     delUser($scope.removeUserIdList[i].us_id)
                 }
-                window.location.href='article_home.html'
             }
 
             $scope.onCacel=function () {
@@ -316,6 +315,7 @@ app.controller('myCtrl',
                 data: $.param(data),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {
+                window.location.href='article_home.html'
             })
         }
 
@@ -323,6 +323,7 @@ app.controller('myCtrl',
             console.log('del User')
             $http.delete('https://dangjain.ishoubei.com/study/' + us_id)
             .then(function (req) {
+                window.location.href='article_home.html'
             })
         }
 
