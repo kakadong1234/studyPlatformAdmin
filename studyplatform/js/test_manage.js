@@ -32,7 +32,7 @@ app.controller('myCtrl',
             //获取数据api
             function getshuju() {
               
-                $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id="+ $scope.leixing + "&page="+ $scope.page)
+                $http.get("http://localhost:8222/exam/question?eqt_id="+ $scope.leixing + "&page="+ $scope.page)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         $scope.total=res.data.total;
@@ -48,7 +48,7 @@ app.controller('myCtrl',
             var id = Number(eq_id)
             console.log(id)
             alert("确定删除？")
-            $http.post("https://dangjain.ishoubei.com/exam/question/del/"+id)
+            $http.post("http://localhost:8222/exam/question/del/"+id)
                 .then(function (res) {
                     console.log("已删除")
                     window.location.href='test_manage.html'

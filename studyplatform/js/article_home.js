@@ -38,7 +38,7 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(pageID,status) {
-                $http.get("https://dangjain.ishoubei.com/article?page="+pageID+"&status="+status)
+                $http.get("http://localhost:8222/article?page="+pageID+"&status="+status)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         $scope.total=res.data.total;
@@ -56,12 +56,12 @@ app.controller('myCtrl',
                 console.log(article_id)
                 $scope.xubangdaingId=article_id
                 //获取数据api
-                $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id=1")
+                $http.get("http://localhost:8222/exam/question?eqt_id=1")
                     .then(function (res) {
                         $scope.shiti1=res.data.rows;
 
                     });
-                $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id=2")
+                $http.get("http://localhost:8222/exam/question?eqt_id=2")
                     .then(function (res) {
                         $scope.shiti2=res.data.rows;
                         //$scope.shititotal=res.data.total;
@@ -72,7 +72,7 @@ app.controller('myCtrl',
 
              $scope.xuancheClick=function (id) {
                  console.log(id)
-                 $http.post("https://dangjain.ishoubei.com/article/"+$scope.xubangdaingId+"/question?eq_id="+id)
+                 $http.post("http://localhost:8222/article/"+$scope.xubangdaingId+"/question?eq_id="+id)
                      .then(function (res) {
 
                      })
@@ -90,7 +90,7 @@ app.controller('myCtrl',
                 var id = Number(article_id)
                 console.log(id)
                 alert("确定删除？")
-                $http.post("https://dangjain.ishoubei.com/article/del/"+id)
+                $http.post("http://localhost:8222/article/del/"+id)
                     .then(function (res) {
                         console.log("已删除")
                         window.location.href='article_home.html'
@@ -102,7 +102,7 @@ app.controller('myCtrl',
                 var id = Number(article_id)
                 console.log(id)
                 alert("确定驳回？")
-                $http.post("https://dangjain.ishoubei.com/article/"+id+"?status=2")
+                $http.post("http://localhost:8222/article/"+id+"?status=2")
                     .then(function (res) {
                         console.log("已驳回")
                         window.location.href='article_home.html'
@@ -113,7 +113,7 @@ app.controller('myCtrl',
                 var id = Number(article_id)
                 console.log(id)
                 alert("确定通过？")
-                $http.post("https://dangjain.ishoubei.com/article/"+id+"?status=5")
+                $http.post("http://localhost:8222/article/"+id+"?status=5")
                     .then(function (res) {
                         console.log("已通过")
                         window.location.href='article_home.html'
@@ -126,13 +126,13 @@ app.controller('myCtrl',
             $scope.settuijian=function (article_id,recommend) {
                 console.log(recommend)
                 if(recommend==0){
-                    $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?recommend=1")
+                    $http.post("http://localhost:8222/article/"+article_id+"?recommend=1")
                         .then(function (res) {
                             console.log("已设置为他山之玉")
                             // window.location.href='article_home.html'
                         })
                 }else if(recommend==1){
-                    $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?recommend=0")
+                    $http.post("http://localhost:8222/article/"+article_id+"?recommend=0")
                         .then(function (res) {
                             console.log("取消他山之玉设置")
                             // window.location.href='article_home.html'
@@ -147,13 +147,13 @@ app.controller('myCtrl',
             $scope.setbanner=function (article_id,banner) {
                 console.log(banner)
                 if(banner==0){
-                    $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?banner=1")
+                    $http.post("http://localhost:8222/article/"+article_id+"?banner=1")
                         .then(function (res) {
                             console.log("已设置为banner")
                             // window.location.href='article_home.html'
                         })
                 }else if(banner==1){
-                    $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?banner=0")
+                    $http.post("http://localhost:8222/article/"+article_id+"?banner=0")
                         .then(function (res) {
                             console.log("取消banner设置")
                             // window.location.href='article_home.html'

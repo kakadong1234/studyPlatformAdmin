@@ -34,7 +34,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com/exam/question/"+$scope.eq_id;
+            var url = "http://localhost:8222/exam/question/"+$scope.eq_id;
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {
@@ -65,7 +65,7 @@ app.controller('myCtrl',
                 tags:$scope.tags,
                 user_id:$scope.user_id
             };
-            var url = "https://dangjain.ishoubei.com/exam/question/"+$scope.eq_id;
+            var url = "http://localhost:8222/exam/question/"+$scope.eq_id;
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (obj) {

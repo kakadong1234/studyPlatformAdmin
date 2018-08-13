@@ -30,7 +30,7 @@ app.controller('myCtrl',
 
         //获取文章类型详情
         function getArticleType(id) {
-            $http.get("https://dangjain.ishoubei.com/type/" + id)
+            $http.get("http://localhost:8222/type/" + id)
                 .then(function (res) {
                     const data = res.data;
                     $scope.type_name = data.type_name;
@@ -50,7 +50,7 @@ app.controller('myCtrl',
             console.log('edit')
             $http({
                 method: 'post',
-                url: 'https://dangjain.ishoubei.com/type/' + $scope.id,
+                url: 'http://localhost:8222/type/' + $scope.id,
                 data: $.param(data),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {
@@ -64,7 +64,7 @@ app.controller('myCtrl',
                 formData = new FormData(form);
             console.log(formData)
             $.ajax({
-                url:"https://dangjain.ishoubei.com/upload",
+                url:"http://localhost:8222/upload",
                 type:"post",
                 data:formData,
                 processData:false,
@@ -72,7 +72,7 @@ app.controller('myCtrl',
                 success:function(res){
                     if(res.url){
                         fileurl = res.url
-                        var httpurl="https://dangjain.ishoubei.com"
+                        var httpurl="http://localhost:8222"
                         $scope.type_icon = httpurl+""+fileurl
                         $("#icon_img").attr("src", $scope.type_icon)
                     }else {
@@ -92,7 +92,7 @@ app.controller('myCtrl',
             var form = document.getElementById('formfengmian'),
                 formData = new FormData(form);
             $.ajax({
-                url:"https://dangjain.ishoubei.com/upload",
+                url:"http://localhost:8222/upload",
                 type:"post",
                 data:formData,
                 processData:false,
@@ -100,7 +100,7 @@ app.controller('myCtrl',
                 success:function(res){
                     if(res.url){
                         fileurl2 = res.url
-                        var httpurl="https://dangjain.ishoubei.com"
+                        var httpurl="http://localhost:8222"
                         $scope.type_cover = httpurl+""+fileurl2
                         $("#cover_img").attr("src", $scope.type_cover)
                     }else {

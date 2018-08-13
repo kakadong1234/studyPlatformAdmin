@@ -9,7 +9,7 @@ app.controller('myCtrl',
         $scope.userid=localStorage.getItem("user_id");
         $scope.username=localStorage.getItem("name");
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com/type?status=0")
+            $http.get("http://localhost:8222/type?status=0")
                 .then(function (res) {
                     $scope.lists=res.data.data;
                     $scope.fenlei=$scope.lists[0].type_id
@@ -28,7 +28,7 @@ app.controller('myCtrl',
                 formData = new FormData(form);
             console.log(formData)
             $.ajax({
-                url:"https://dangjain.ishoubei.com/upload",
+                url:"http://localhost:8222/upload",
                 type:"post",
                 data:formData,
                 processData:false,
@@ -55,7 +55,7 @@ app.controller('myCtrl',
             var form = document.getElementById('formfengmian'),
                 formData = new FormData(form);
             $.ajax({
-                url:"https://dangjain.ishoubei.com/upload",
+                url:"http://localhost:8222/upload",
                 type:"post",
                 data:formData,
                 processData:false,
@@ -87,7 +87,7 @@ app.controller('myCtrl',
             if (r==true)
             {
 
-                $http.post("https://dangjain.ishoubei.com/type/"+type_id+"?type_state=2")
+                $http.post("http://localhost:8222/type/"+type_id+"?type_state=2")
                     .then(function (res) {
                         alert("已显示!");
                         window.location.href="article_type.html"
@@ -109,7 +109,7 @@ app.controller('myCtrl',
             if (r==true)
             {
 
-                $http.post("https://dangjain.ishoubei.com/type/"+type_id+"?type_state=0")
+                $http.post("http://localhost:8222/type/"+type_id+"?type_state=0")
                     .then(function (res) {
                         alert("已隐藏!");
                         window.location.href="article_type.html"
@@ -142,7 +142,7 @@ app.controller('myCtrl',
             if (r==true)
             {
 
-                $http.post("https://dangjain.ishoubei.com/type/del/"+id)
+                $http.post("http://localhost:8222/type/del/"+id)
                     .then(function (res) {
                         //alert("删除成功！");
                         window.location.href="article_type.html"
@@ -162,7 +162,7 @@ app.controller('myCtrl',
 
 
         $scope.xinjianfenlei=function () {
-            var httpurl="https://dangjain.ishoubei.com"
+            var httpurl="http://localhost:8222"
             var imageurl=httpurl+""+fileurl
             var imageurl2=httpurl+""+fileurl2
 
@@ -174,7 +174,7 @@ app.controller('myCtrl',
                 type_sort:Number($scope.type_sort),
                 type_desc:$scope.type_desc
             };
-            var url = "https://dangjain.ishoubei.com/type";
+            var url = "http://localhost:8222/type";
             var transFn = function (data) { return $.param(data) },
                 postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
             $http.post(url,$scope.data1,postCfg).success(function (res) {

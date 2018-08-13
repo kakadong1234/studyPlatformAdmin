@@ -8,7 +8,7 @@ app.controller('myCtrl',
         $scope.pd_id=Request.pd_id
         $scope.pb_pattern=Request.pb_pattern
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com/party/"+$scope.pd_id)
+            $http.get("http://localhost:8222/party/"+$scope.pd_id)
                 .then(function (res) {
                     $scope.jianjie=res.data.pb_desc
                     $scope.dianhua=res.data.pb_phone

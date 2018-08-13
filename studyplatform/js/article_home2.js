@@ -32,19 +32,19 @@ app.controller('myCtrl',
         $scope.page=1
        var  status=1
         $scope.load=function () {        //获取数据api
-            $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id=1")
+            $http.get("http://localhost:8222/exam/question?eqt_id=1")
                 .then(function (res) {
                     $scope.shiti1=res.data.rows;
 
                 });
-            $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id=2")
+            $http.get("http://localhost:8222/exam/question?eqt_id=2")
                 .then(function (res) {
                     $scope.shiti2=res.data.rows;
                 });
             getArticletype()
             //获取文章类型
             function getArticletype() {
-                $http.get("https://dangjain.ishoubei.com/type")
+                $http.get("http://localhost:8222/type")
                     .then(function (res) {
                         $scope.typelistone=res.data.data;
                         for(var i=0;i<$scope.typelistone.length;i++){
@@ -60,7 +60,7 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(pageID,status,type_id, coursetype) {
-                $http.get("https://dangjain.ishoubei.com/article?page="+pageID+"&status="+1+"&type_id="+type_id+"&limit=100")
+                $http.get("http://localhost:8222/article?page="+pageID+"&status="+1+"&type_id="+type_id+"&limit=100")
                     .then(function (res) {
                         $scope.lists=res.data.rows.filter(function(item){
                             console.log(item.coursetype)
@@ -75,12 +75,12 @@ app.controller('myCtrl',
 
 
             //获取试题
-            $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id=1")
+            $http.get("http://localhost:8222/exam/question?eqt_id=1")
                 .then(function (res) {
                     $scope.shiti1=res.data.rows;
 
                 });
-            $http.get("https://dangjain.ishoubei.com/exam/question?eqt_id=2")
+            $http.get("http://localhost:8222/exam/question?eqt_id=2")
                 .then(function (res) {
                     $scope.shiti2=res.data.rows;
                 });
@@ -124,7 +124,7 @@ app.controller('myCtrl',
 
             //选择试题
             $scope.noshitiClick=function (article_id) {
-                $http.get("https://dangjain.ishoubei.com/cadre?page=1&limit=1000")
+                $http.get("http://localhost:8222/cadre?page=1&limit=1000")
                     .then(function (res) {
                         $scope.user = res.data.rows
                         $scope.userLength = $scope.user.length
@@ -201,7 +201,7 @@ app.controller('myCtrl',
                 if (r==true)
                 {
 
-                    $http.post("https://dangjain.ishoubei.com/article/del/"+id)
+                    $http.post("http://localhost:8222/article/del/"+id)
                         .then(function (res) {
                             console.log("已删除")
                             window.location.href='article_home.html'
@@ -221,7 +221,7 @@ app.controller('myCtrl',
                 if (r==true)
                 {
 
-                    $http.post("https://dangjain.ishoubei.com/article/"+id+"?status=2")
+                    $http.post("http://localhost:8222/article/"+id+"?status=2")
                         .then(function (res) {
                             window.location.reload()
                         })
@@ -239,7 +239,7 @@ app.controller('myCtrl',
                 if (r==true)
                 {
 
-                    $http.post("https://dangjain.ishoubei.com/article/"+id+"?status=5")
+                    $http.post("http://localhost:8222/article/"+id+"?status=5")
                         .then(function (res) {
                             window.location.href='article_home.html'
                         })
@@ -256,13 +256,13 @@ app.controller('myCtrl',
             $scope.settuijian=function (article_id,recommend) {
                 console.log(recommend)
                 if(recommend==0){
-                    $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?recommend=1")
+                    $http.post("http://localhost:8222/article/"+article_id+"?recommend=1")
                         .then(function (res) {
                             console.log("已设置为他山之玉")
                             window.location.href='article_home.html?'
                         })
                 }else if(recommend==1){
-                    $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?recommend=0")
+                    $http.post("http://localhost:8222/article/"+article_id+"?recommend=0")
                         .then(function (res) {
                             console.log("取消他山之玉设置")
                             window.location.href='article_home.html'
@@ -311,7 +311,7 @@ app.controller('myCtrl',
             console.log('add User')
             $http({
                 method: 'post',
-                url: 'https://dangjain.ishoubei.com/study',
+                url: 'http://localhost:8222/study',
                 data: $.param(data),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {
@@ -321,7 +321,7 @@ app.controller('myCtrl',
 
         function delUser(us_id){
             console.log('del User')
-            $http.delete('https://dangjain.ishoubei.com/study/' + us_id)
+            $http.delete('http://localhost:8222/study/' + us_id)
             .then(function (req) {
                 window.location.href='article_home.html'
             })
@@ -329,7 +329,7 @@ app.controller('myCtrl',
 
         function getStudy(article_id) {
             console.log('getStudy by article_id')
-            $http.get("https://dangjain.ishoubei.com/study?article_id="+article_id + "&limit=1000")
+            $http.get("http://localhost:8222/study?article_id="+article_id + "&limit=1000")
             .then(function (res) {
                 $scope.selectedUserIdList = res.data.rows.map(function(item){
                     return {

@@ -22,7 +22,7 @@ app.controller('myCtrl',
             }
             //获取数据api
             function getshuju(pageID) {
-                $http.get("https://dangjain.ishoubei.com/cadre?page="+$scope.page)
+                $http.get("http://localhost:8222/cadre?page="+$scope.page)
                     .then(function (res) {
                         $scope.lists=res.data.rows;
                         $scope.total=res.data.total;
@@ -35,7 +35,7 @@ app.controller('myCtrl',
             $scope.deletearticle=function (user_id) {
                 console.log(user_id)
                 alert("确定删除？")
-                $http.delete("https://dangjain.ishoubei.com/cadre?user_id="+user_id)
+                $http.delete("http://localhost:8222/cadre?user_id="+user_id)
                     .then(function (res) {
                         console.log("已删除")
                         window.location.href="ganbu_manage.html"

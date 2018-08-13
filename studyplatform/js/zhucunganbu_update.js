@@ -23,7 +23,7 @@ app.controller('myCtrl',
                     console.log($scope.weidu)
                     // $http({
                     //     method:'post',
-                    //     url:'https://dangjain.ishoubei.com:8443/cadre',
+                    //     url:'http://localhost:8222:8443/cadre',
                     //     data:{
                     //         user_id:$scope.user_id,
                     //         longitude:Number($scope.jingdu),
@@ -35,7 +35,7 @@ app.controller('myCtrl',
                     // })
 
 
-                    $http.post("https://dangjain.ishoubei.com/cadre?user_id="+$scope.user_id+"&longitude="+Number($scope.jingdu)+"&latitude="+Number($scope.weidu))
+                    $http.post("http://localhost:8222/cadre?user_id="+$scope.user_id+"&longitude="+Number($scope.jingdu)+"&latitude="+Number($scope.weidu))
                         .then(function (res) {
                             window.location.href="ganbu_manage.html"
                         })

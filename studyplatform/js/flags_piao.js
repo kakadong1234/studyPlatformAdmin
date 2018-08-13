@@ -32,7 +32,7 @@ app.controller('myCtrl',
 
 
             //党建示范点标记
-            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=1&page="+$scope.page)
+            $http.get("http://localhost:8222/party?pb_pattern=1&page="+$scope.page)
                 .then(function (res) {
                     var beizhu=[];
                     var list=[]
@@ -55,7 +55,7 @@ app.controller('myCtrl',
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=1&page="+a)
+                            $http.get("http://localhost:8222/party?pb_pattern=1&page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([resp.data.rows[i].longitude, resp.data.rows[i].latitude]);
@@ -98,7 +98,7 @@ app.controller('myCtrl',
 
 
             //党支部分布
-            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=0&page="+$scope.page)
+            $http.get("http://localhost:8222/party?pb_pattern=0&page="+$scope.page)
                 .then(function (res) {
                     var beizhu=[];
                     var list=[]
@@ -123,7 +123,7 @@ app.controller('myCtrl',
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com/party?pb_pattern=0&page="+a)
+                            $http.get("http://localhost:8222/party?pb_pattern=0&page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([
@@ -166,7 +166,7 @@ app.controller('myCtrl',
 
 
             //驻村干部
-            $http.get("https://dangjain.ishoubei.com/cadre?page="+$scope.page)
+            $http.get("http://localhost:8222/cadre?page="+$scope.page)
                 .then(function (res) {
                     var beizhu=[];
                     var list=[]
@@ -179,7 +179,7 @@ app.controller('myCtrl',
                     }
                     if(yeshu>1){
                         for(var a=2;a<=yeshu;a++){
-                            $http.get("https://dangjain.ishoubei.com/cadre?page="+a)
+                            $http.get("http://localhost:8222/cadre?page="+a)
                                 .then(function (resp) {
                                     for (var i = 0; i < resp.data.rows.length; i++) {
                                         list.push([resp.data.rows[i].longitude, resp.data.rows[i].latitude]);
@@ -411,7 +411,7 @@ app.controller('myCtrl',
                 var tashanzhiyu=[]
                 var bannerlist=[]
                 var dongtailist=[]
-                $http.get("https://dangjain.ishoubei.com/article?status=5&type_id=41")
+                $http.get("http://localhost:8222/article?status=5&type_id=41")
                     .then(function (res) {
                        $scope.showlists=res.data.rows
                        for (var i=0;i<$scope.showlists.length;i++){
@@ -447,7 +447,7 @@ app.controller('myCtrl',
 
             //banner
             function bannerget() {
-                $http.get("https://dangjain.ishoubei.com/article?status=5&type_id=45")
+                $http.get("http://localhost:8222/article?status=5&type_id=45")
                     .then(function (res) {
                         $scope.bannerlist=res.data.rows
                     });
@@ -455,7 +455,7 @@ app.controller('myCtrl',
 
             //他山之石
             function tashanzhiyuget() {
-                $http.get("https://dangjain.ishoubei.com/article?status=5&type_id=44")
+                $http.get("http://localhost:8222/article?status=5&type_id=44")
                     .then(function (res) {
                         $scope.tashanzhiyu=res.data.rows
                     });

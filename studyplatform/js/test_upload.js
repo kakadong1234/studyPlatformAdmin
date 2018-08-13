@@ -26,7 +26,7 @@ app.controller('myCtrl',
                 formData = new FormData(form);
             console.log(formData)
             $.ajax({
-                url:"https://dangjain.ishoubei.com/exam/question/up",
+                url:"http://localhost:8222/exam/question/up",
                 type:"post",
                 data:formData,
                 processData:false,

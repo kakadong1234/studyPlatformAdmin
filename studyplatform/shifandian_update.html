@@ -41,7 +41,7 @@
                     <a href="article_home.html" target="_self"><i class="fa fa-th-large"></i> <span class="nav-label">课程中心</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="article_home.html" target="_self">课程管理</a></li>
-                        <li> <!-- <a href="article_type.html" target="_self">文章类型123</a> --></li>
+                        <li> <a href="article_type.html" target="_self">课程类型</a></li>
                         <!--<li><a href="article_comment.html" target="_self">评论管理</a></li>-->
                     </ul>
                 </li>
@@ -294,7 +294,7 @@
             UE.Editor.prototype.getActionUrl = function (action) {
                 //拦截这两个，其他的不拦截,调用备份
                 if (action == 'uploadimage' || action == 'uploadfile') {
-                    return "https://dangjain.ishoubei.com/upload";
+                    return "http://localhost:8222/upload";
                 } else{
                     return this._bkGetActionUrl.call(this, action);
                 }
@@ -310,7 +310,7 @@
                 initialFrameHeight:260
             });
             $scope.load=function(){
-                $http.get("https://dangjain.ishoubei.com/party/"+$scope.id)
+                $http.get("http://localhost:8222/party/"+$scope.id)
                     .then(function (res) {
                         $scope.jianjie=res.data.pb_desc
                         $scope.dianhua=res.data.pb_phone
@@ -343,7 +343,7 @@
 
                 $http({
                     method:'post',
-                    url:'https://dangjain.ishoubei.com/party/'+$scope.id,
+                    url:'http://localhost:8222/party/'+$scope.id,
                     data:{
                         pb_name:$scope.mingchen,
                         pb_address:$scope.dizhi,

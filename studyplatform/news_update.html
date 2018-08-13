@@ -38,7 +38,7 @@
                     <a href="article_home.html" target="_self"><i class="fa fa-th-large"></i> <span class="nav-label">课程中心</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="article_home.html" target="_self">课程管理</a></li>
-                        <li> <!-- <a href="article_type.html" target="_self">文章类型123</a> --></li>
+                        <li> <a href="article_type.html" target="_self">课程类型</a></li>
                         <!--<li><a href="article_comment.html" target="_self">评论管理</a></li>-->
                     </ul>
                 </li>
@@ -299,7 +299,7 @@
 
                 //拦截这两个，其他的不拦截,调用备份
                 if (action == 'uploadimage' || action == 'uploadfile') {
-                    return "https://dangjain.ishoubei.com/upload";
+                    return "http://localhost:8222/upload";
                 } else{
                     return this._bkGetActionUrl.call(this, action);
                 }
@@ -316,7 +316,7 @@
             });
 
             $scope.load=function () {
-                $http.get("https://dangjain.ishoubei.com/article/"+$scope.article_id)
+                $http.get("http://localhost:8222/article/"+$scope.article_id)
                     .then(function (res) {
                         $scope.lists=res.data;
                         $scope.type_name=res.data.type_name;
@@ -362,7 +362,7 @@
                 var form = document.getElementById('form1'),
                     formData = new FormData(form);
                 $.ajax({
-                    url:"https://dangjain.ishoubei.com/upload",
+                    url:"http://localhost:8222/upload",
                     type:"post",
                     data:formData,
                     processData:false,
@@ -371,7 +371,7 @@
                         if(res.url){
                             fileurl = res.url
                             console.log($scope.coverjiu)
-                            var httpurl="https://dangjain.ishoubei.com"
+                            var httpurl="http://localhost:8222"
 
                             $scope.coverjiu = httpurl+""+fileurl
                             $("#cover_img").attr("src", $scope.coverjiu)
@@ -388,10 +388,10 @@
             }
 
             $scope.subtijiao=function () {
-                var httpurl="https://dangjain.ishoubei.com"
+                var httpurl="http://localhost:8222"
                 var imageurl=httpurl+""+fileurl
                 console.log(imageurl)
-                if(imageurl="https://dangjain.ishoubei.com"){
+                if(imageurl="http://localhost:8222"){
                     imageurl=$scope.coverjiu
                 }
                 $scope.data1 = {
@@ -404,7 +404,7 @@
                     urls:$scope.urls
                 };
                 console.log($scope.data1)
-                var url = "https://dangjain.ishoubei.com/news/"+$scope.article_id;
+                var url = "http://localhost:8222/news/"+$scope.article_id;
                 var transFn = function (data) { return $.param(data) },
                     postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
                 $http.post(url,$scope.data1,postCfg).success(function (res) {

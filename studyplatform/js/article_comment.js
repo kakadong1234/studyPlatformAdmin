@@ -25,7 +25,7 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(pageID,id) {
-                $http.get("https://dangjain.ishoubei.com/article/"+id+"/aq?status=-1")
+                $http.get("http://localhost:8222/article/"+id+"/aq?status=-1")
                     .then(function (res) {
                         $scope.lists=res.data.aq
                     });
@@ -41,7 +41,7 @@ app.controller('myCtrl',
             if (r==true)
             {
 
-                $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?status=0")
+                $http.post("http://localhost:8222/article/"+article_id+"?status=0")
                     .then(function (res) {
                         alert("已显示!");
                         window.location.reload()
@@ -62,7 +62,7 @@ app.controller('myCtrl',
             if (r==true)
             {
 
-                $http.post("https://dangjain.ishoubei.com/article/"+article_id+"?status=1")
+                $http.post("http://localhost:8222/article/"+article_id+"?status=1")
                     .then(function (res) {
                         alert("已隐藏!");
                         window.location.reload()

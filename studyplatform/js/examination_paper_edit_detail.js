@@ -92,7 +92,7 @@ app.controller('myCtrl',
 
         //获取某个考试配
         function getExamPage(id) {
-            $http.get("https://dangjain.ishoubei.com/exam/plan/" + id)
+            $http.get("http://localhost:8222/exam/plan/" + id)
                 .then(function (res) {
                     //TODO: 接口异常???
                     $scope.ep_name = res.data.ep_name;
@@ -129,7 +129,7 @@ app.controller('myCtrl',
             console.log('edit')
             $http({
                 method: 'post',
-                url: 'https://dangjain.ishoubei.com/exam/plan/' + id,
+                url: 'http://localhost:8222/exam/plan/' + id,
                 data: $.param(data),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {
@@ -139,7 +139,7 @@ app.controller('myCtrl',
         }
 
         function getTags() {
-            $http.get("https://dangjain.ishoubei.com/exam/tags")
+            $http.get("http://localhost:8222/exam/tags")
                 .then(function (res) {
                     //TODO: 接口异常???
                     $scope.initScopeList = res.data.rows

@@ -54,7 +54,7 @@
                                 <a href="article_home.html" target="_self">课程管理</a>
                             </li>
                             <li>
-                                 <!-- <a href="article_type.html" target="_self">文章类型123</a> -->
+                                 <a href="article_type.html" target="_self">课程类型</a>
                             </li>
                             <!--<li><a href="article_comment.html" target="_self">评论管理</a></li>-->
                         </ul>
@@ -327,7 +327,7 @@
                 UE.Editor.prototype.getActionUrl = function (action) {
                     //拦截这两个，其他的不拦截,调用备份
                     if (action == 'uploadimage' || action == 'uploadfile') {
-                        return "https://dangjain.ishoubei.com/upload";
+                        return "http://localhost:8222/upload";
                     } else {
                         return this._bkGetActionUrl.call(this, action);
                     }
@@ -428,7 +428,7 @@
                     }
                     //获取文章类型
                     function getshuju(pageID) {
-                        $http.get("https://dangjain.ishoubei.com/type")
+                        $http.get("http://localhost:8222/type")
                             .then(function (res) {
                                 $scope.typelistone = res.data.data;
 
@@ -475,7 +475,7 @@
 
                     //    获取党组织结构
                     function dtptlist() {
-                        $http.get("https://dangjain.ishoubei.com/dding?key=dept_list&dept_id=0")
+                        $http.get("http://localhost:8222/dding?key=dept_list&dept_id=0")
                             .then(function (res) {
                                 $scope.deptLists = res.data
                                 $scope.depts = $scope.deptLists[0]
@@ -498,7 +498,7 @@
                         formData = new FormData(form);
                         console.log(formData)
                     $.ajax({
-                        url: "https://dangjain.ishoubei.com/upload",
+                        url: "http://localhost:8222/upload",
                         type: "post",
                         data: formData,
                         processData: false,
@@ -562,7 +562,7 @@
                         console.log(fileurl)
                     }
                     else {
-                        var httpurl = "https://dangjain.ishoubei.com"
+                        var httpurl = "http://localhost:8222"
                         imageurl = httpurl + "" + fileurl
                     }
                     console.log($scope.coursetype)
@@ -585,7 +585,7 @@
                         pubtime: $scope.pubtime,
                         coursetype: Number($scope.coursetype)
                     };
-                    var url = "https://dangjain.ishoubei.com/article";
+                    var url = "http://localhost:8222/article";
                     var transFn = function (data) { return $.param(data) },
                         postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
                     $http.post(url, $scope.data1, postCfg).success(function (res) {

@@ -67,7 +67,7 @@
 
         //拦截这两个，其他的不拦截,调用备份
         if (action == 'uploadimage' || action == 'uploadfile') {
-            return "https://dangjain.ishoubei.com/upload";
+            return "http://localhost:8222/upload";
         } else{
             return this._bkGetActionUrl.call(this, action);
         }

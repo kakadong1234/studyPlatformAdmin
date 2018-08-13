@@ -15,7 +15,7 @@ app.controller('myCtrl',
 
                 //拦截这两个，其他的不拦截,调用备份
                 if (action == 'uploadimage' || action == 'uploadfile') {
-                    return "https://dangjain.ishoubei.com/upload";
+                    return "http://localhost:8222/upload";
                 } else{
                     return this._bkGetActionUrl.call(this, action);
                 }
@@ -43,7 +43,7 @@ app.controller('myCtrl',
 
             $http({
                 method:'post',
-                url:'https://dangjain.ishoubei.com/party',
+                url:'http://localhost:8222/party',
                 data:{
                     pb_name:$scope.mingchen,
                     pb_address:$scope.dizhi,

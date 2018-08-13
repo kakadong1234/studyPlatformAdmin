@@ -8,7 +8,7 @@ app.controller('myCtrl',
         $scope.user_id=Request.user_id
 
         $scope.load=function(){
-            $http.get("https://dangjain.ishoubei.com/cadre/"+$scope.user_id)
+            $http.get("http://localhost:8222/cadre/"+$scope.user_id)
                 .then(function (res) {
                     $scope.jianjie=res.data.pb_desc
                     $scope.mingchen=res.data.user_name

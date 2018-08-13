@@ -26,7 +26,7 @@ app.controller('myCtrl',
             // map.add(marker);
 
 
-            $http.get("https://dangjain.ishoubei.com/dding/user/checkin?user_id="+$scope.user_id)
+            $http.get("http://localhost:8222/dding/user/checkin?user_id="+$scope.user_id)
                 .then(function (res) {
 
                 });
