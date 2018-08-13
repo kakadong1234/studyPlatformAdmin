@@ -251,6 +251,7 @@
                                                     <tr>
                                                         <!-- <th class="sorting_asc text-center" width="34%">类型</th> -->
                                                         <th class="sorting text-center">文章标题</th>
+                                                        <th class="sorting text-center">文章类型</th>
                                                         <!--<th class="sorting text-center">文章摘要</th>-->
                                                         <th class="sorting text-center">封面图</th>
                                                         <th class="sorting text-center">学分</th>
@@ -267,6 +268,7 @@
                                                             <label style="margin-right: 10px;text-align: left" ng-repeat="y in x.type_ids">{{y.type_name}}</label>
                                                         </td> -->
                                                         <td ng-click="onClick(x.article_id)">{{x.title}}</td>
+                                                        <td ng-click="onClick(x.article_id)">{{x.type_ids[0].type_name}}</td>
                                                         <!--<td  ng-click="onClick(x.article_id)">{{x.abstract}}</td>-->
                                                         <td  ng-click="onClick(x.article_id)">
                                                             <img src="{{x.cover}}" style="width: 40px;height: auto;">
@@ -299,6 +301,7 @@
                                                     <tr>
                                                         <!-- <th class="sorting_asc text-center" width="34%">类型</th> -->
                                                         <th class="sorting text-center">文章标题</th>
+                                                        <th class="sorting text-center">文章类型</th>
                                                         <!--<th class="sorting text-center">文章摘要</th>-->
                                                         <th class="sorting text-center">封面图</th>
                                                         <th class="sorting text-center">学分</th>
@@ -315,6 +318,7 @@
                                                             <label style="margin-right: 10px;text-align: left" ng-repeat="y in x.type_ids">{{y.type_name}}</label>
                                                         </td> -->
                                                         <td ng-click="onClick(x.article_id)">{{x.title}}</td>
+                                                        <td ng-click="onClick(x.article_id)">{{x.type_ids[0].type_name}}</td>
                                                         <!--<td  ng-click="onClick(x.article_id)">{{x.abstract}}</td>-->
                                                         <td  ng-click="onClick(x.article_id)">
                                                             <img src="{{x.cover}}" style="width: 40px;height: auto;">
@@ -349,6 +353,7 @@
                                                     <tr>
                                                         <!-- <th class="sorting_asc text-center" width="34%">类型</th> -->
                                                         <th class="sorting text-center">文章标题</th>
+                                                        <th class="sorting text-center">文章类型</th>
                                                         <!--<th class="sorting text-center">文章摘要</th>-->
                                                         <th class="sorting text-center">封面图</th>
                                                         <th class="sorting text-center">学分</th>
@@ -369,6 +374,7 @@
                                                             <label style="margin-right: 10px;text-align: left" ng-repeat="y in x.type_ids">{{y.type_name}}</label>
                                                         </td> -->
                                                         <td ng-click="onClick(x.article_id)">{{x.title}}</td>
+                                                        <td ng-click="onClick(x.article_id)">{{x.type_ids[0].type_name}}</td>
                                                         <!--<td  ng-click="onClick(x.article_id)">{{x.abstract}}</td>-->
                                                         <td  ng-click="onClick(x.article_id)">
                                                             <img src="{{x.cover}}" style="width: 40px;height: auto;">

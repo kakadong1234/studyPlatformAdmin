@@ -41,7 +41,8 @@ app.controller('myCtrl',
                 .then(function (res) {
                     $scope.shiti2=res.data.rows;
                 });
-            getArticletype()
+            getshuju(1,1,10,1)
+            // getArticletype()
             //获取文章类型
             function getArticletype() {
                 $http.get("http://localhost:8222/type")
@@ -60,7 +61,8 @@ app.controller('myCtrl',
 
             //获取数据api
             function getshuju(pageID,status,type_id, coursetype) {
-                $http.get("http://localhost:8222/article?page="+pageID+"&status="+1+"&type_id="+type_id+"&limit=100")
+                // $http.get("http://localhost:8222/article?page="+pageID+"&status="+1+"&type_id="+type_id+"&limit=100")
+                $http.get("http://localhost:8222/article?page="+pageID+"&status="+1+"&limit=100")
                     .then(function (res) {
                         $scope.lists=res.data.rows.filter(function(item){
                             console.log(item.coursetype)
@@ -95,29 +97,29 @@ app.controller('myCtrl',
             }
             $scope.onleixingClick1=function () {
                 status=1;
-                $scope.newsDangjian=$scope.articleType.type_name
-                getshuju($scope.page,status,$scope.articleType.type_id, 1)
+                // $scope.newsDangjian=$scope.articleType.type_name
+                getshuju($scope.page,status,1, 1)
             }
             $scope.onleixingClick2=function () {
                 status=2;
-                $scope.newsDangjian=$scope.articleType.type_name
-                getshuju($scope.page,status,$scope.articleType.type_id, 2)
+                // $scope.newsDangjian=$scope.articleType.type_name
+                getshuju($scope.page,status,1, 2)
             }
             $scope.onleixingClick5=function () {
                 status=5;
-                $scope.newsDangjian=$scope.articleType.type_name
-                getshuju($scope.page,status,$scope.articleType.type_id, 3)
+                // $scope.newsDangjian=$scope.articleType.type_name
+                getshuju($scope.page,status,1, 3)
             }
             $scope.downOnClick= function () {
                 if($scope.page<$scope.pagesLists){
                     $scope.page = $scope.page+1;
-                    getshuju($scope.page,status,$scope.articleType.type_id, 1);
+                    getshuju($scope.page,status,1, 1);
                 }
             }
             $scope.upOnClick= function () {
                 if($scope.page>1) {
                     $scope.page = $scope.page - 1;
-                    getshuju($scope.page,status,$scope.articleType.type_id, 1);
+                    getshuju($scope.page,status,1, 1);
                 }
             }
 

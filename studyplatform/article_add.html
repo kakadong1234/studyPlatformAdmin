@@ -151,13 +151,29 @@
                                     <div class="col-md-12 b-r" style="margin: 10px 0px">
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: right;margin-top: 7px">
-                                                <strong>课程类型：</strong>
+                                                <strong>课程分类：</strong>
                                             </div>
                                             <div class="col-md-6">
                                                 <select class="form-control" name="coursetype" ng-model="coursetype">
                                                     <option value="1">选修课</option>
                                                     <option value="2">必修课</option>
                                                     <option value="3">付费课程</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-12 b-r" style="margin: 10px 0px">
+                                        <div class="form-group">
+                                            <div class="col-md-1" style="text-align: right;margin-top: 7px">
+                                                <strong>课程类型：</strong>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="type" ng-model="type">
+                                                    <option ng-repeat="x in typelistone" value="{{x.type_id}}">{{x.type_name}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -393,24 +409,17 @@
                     var currentDate = newDate.getFullYear() + "-" + month + "-" + strDate
                         + " " + newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
                     $scope.pubtime = currentDate
-
-
-
                     //选择日期加时间
-                    jeDate("#myDateClick", {
-                        festival: false,
-                        minDate: "2018-01-01",              //最小日期
-                        maxDate: "2050-12-31",              //最大日期
-                        format: "YYYY-MM-DD hh:mm:ss",
-                        donefun: function (obj) {
-                            myDate = obj.val;
-                            $scope.pubtime = myDate
-                        }
-                    })
-
-
-
-
+                    // jeDate("#myDateClick", {
+                    //     festival: false,
+                    //     minDate: "2018-01-01",              //最小日期
+                    //     maxDate: "2050-12-31",              //最大日期
+                    //     format: "YYYY-MM-DD hh:mm:ss",
+                    //     donefun: function (obj) {
+                    //         myDate = obj.val;
+                    //         $scope.pubtime = myDate
+                    //     }
+                    // })
                     var liststype = []
                     getshuju($scope.page);
                     dtptlist()
@@ -433,9 +442,10 @@
                                 $scope.typelistone = res.data.data;
 
                                 for (var i = 0; i < $scope.typelistone.length; i++) {
-                                    for (var m = 0; m < $scope.typelistone[i].childs.length; m++) {
-                                        typebbbb.push($scope.typelistone[i].childs[m])
-                                    }
+                                    // for (var m = 0; m < $scope.typelistone[i].childs.length; m++) {
+                                        // typebbbb.push($scope.typelistone[i].childs[m])
+                                        typebbbb.push($scope.typelistone[i])
+                                    // }
                                 }
                             });
                     }
@@ -566,9 +576,10 @@
                         imageurl = httpurl + "" + fileurl
                     }
                     console.log($scope.coursetype)
+                    console.log($scope.type)
                     $scope.data1 = {
                         user_id: $scope.user_id,
-                        type_ids: 1,
+                        type_ids: $scope.type,
                         title: $scope.title,
                         abstract: $scope.abstract,
                         content: ue.getContent(),
@@ -585,6 +596,7 @@
                         pubtime: $scope.pubtime,
                         coursetype: Number($scope.coursetype)
                     };
+                    
                     var url = "http://localhost:8222/article";
                     var transFn = function (data) { return $.param(data) },
                         postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
