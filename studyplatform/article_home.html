@@ -305,6 +305,7 @@
                                                         <!--<th class="sorting text-center">文章摘要</th>-->
                                                         <th class="sorting text-center">封面图</th>
                                                         <th class="sorting text-center">学分</th>
+                                                        <th class="sorting text-center">学习时限(天)</th>
                                                         <th class="sorting text-center">作者</th>
                                                         <!--<th class="sorting">创建时间</th>-->
                                                         <!-- <th class="sorting text-center">发布时间</th> -->
@@ -324,6 +325,7 @@
                                                             <img src="{{x.cover}}" style="width: 40px;height: auto;">
                                                         </td>
                                                         <td ng-click="onClick(x.article_id)">{{x.period}}</td>
+                                                        <td ng-click="onClick(x.article_id)">{{x.credit}}</td>
                                                         <td ng-click="onClick(x.article_id)">{{x.author}}</td>
                                                         <!--<td ng-click="onClick(x.article_id)">{{x.created}}</td>-->
                                                         <!-- <td ng-click="onClick(x.article_id)">{{x.pubtime}}</td> -->

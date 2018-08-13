@@ -228,6 +228,20 @@
                                     </div>
                                 </div> -->
 
+                                <!-- <div class="row" ng-if="coursetype == 2"> -->
+                                <div class="row">
+                                    <div class="col-md-12 b-r" style="margin: 10px 0px">
+                                        <div class="form-group">
+                                            <div class="col-md-1" style="text-align: right;margin-top: 7px">
+                                                <strong>学习时限(天)：</strong>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="credit" ng-model="credit">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-12 b-r" style="margin: 10px 0px">
                                         <div class="form-group">
@@ -575,8 +589,9 @@
                         var httpurl = "http://localhost:8222"
                         imageurl = httpurl + "" + fileurl
                     }
-                    console.log($scope.coursetype)
-                    console.log($scope.type)
+                    // console.log($scope.coursetype)
+                    // console.log($scope.type)
+                    console.log($scope.credit)
                     $scope.data1 = {
                         user_id: $scope.user_id,
                         type_ids: $scope.type,
@@ -584,7 +599,7 @@
                         abstract: $scope.abstract,
                         content: ue.getContent(),
                         period: Number($scope.period),
-                        credit: $scope.credit,
+                        credit: Number($scope.credit),
                         cover: imageurl,
                         urls: $scope.urls,
                         author: $scope.author,
@@ -596,7 +611,7 @@
                         pubtime: $scope.pubtime,
                         coursetype: Number($scope.coursetype)
                     };
-                    
+                    console.log($scope.data1)
                     var url = "http://localhost:8222/article";
                     var transFn = function (data) { return $.param(data) },
                         postCfg = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }, transformRequest: transFn };
