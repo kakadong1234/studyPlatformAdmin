@@ -19,10 +19,10 @@ app.controller('myCtrl',
         $scope.edit = function () {
             const data = {
                 type_name: $scope.type_name,
-                type_sort: $scope.type_sort,
+                type_sort: 1,
                 type_desc: $scope.type_desc,
-                type_icon: $scope.type_icon,
-                type_cover: $scope.type_cover
+                // type_icon: $scope.type_icon,
+                // type_cover: $scope.type_cover
             }
             console.log(data)
             editArticleType(data);

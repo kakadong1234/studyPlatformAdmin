@@ -11,14 +11,14 @@ app.controller('myCtrl',
         $scope.load=function(){
             $http.get("http://localhost:8222/type?status=0")
                 .then(function (res) {
-                    $scope.lists=res.data.data;
-                    $scope.fenlei=$scope.lists[0].type_id
-                    $scope.lists0=res.data.data[0].childs;
-                    $scope.lists1=res.data.data[1].childs;
-                    $scope.lists2=res.data.data[2].childs;
-                    $scope.lists3=$scope.lists[3].childs;
-                    console.log($scope.lists)
-                    console.log($scope.lists[3])
+                    $scope.lists0=res.data.data;
+                    // $scope.fenlei=$scope.lists[0].type_id
+                    // $scope.lists0=res.data.data
+                    // $scope.lists1=res.data.data[1].childs;
+                    // $scope.lists2=res.data.data[2].childs;
+                    // $scope.lists3=$scope.lists[3].childs;
+                    // console.log($scope.lists)
+                    // console.log($scope.lists[3])
                 });
 
         }
@@ -162,16 +162,16 @@ app.controller('myCtrl',
 
 
         $scope.xinjianfenlei=function () {
-            var httpurl="http://localhost:8222"
-            var imageurl=httpurl+""+fileurl
-            var imageurl2=httpurl+""+fileurl2
+            // var httpurl="http://localhost:8222"
+            // var imageurl=httpurl+""+fileurl
+            // var imageurl2=httpurl+""+fileurl2
 
             $scope.data1 = {
-                type_fid:$scope.fenlei,
+                type_fid: 10,
                 type_name:$scope.type_name,
-                type_icon:imageurl,
-                type_cover:imageurl2,
-                type_sort:Number($scope.type_sort),
+                // type_icon:imageurl,
+                // type_cover:imageurl2,
+                type_sort:1,
                 type_desc:$scope.type_desc
             };
             var url = "http://localhost:8222/type";
