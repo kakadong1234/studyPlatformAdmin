@@ -239,9 +239,65 @@
                                             </div>
                                         </div>
                                     </div>
+                                </form>
+                                <form role="form"  id="form2">
+                                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">选择试题</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-container">
+                                                        <form id="icon_validate">
+                                                            <div class="row">
+                                                                <div class="modal-body">
+                                                                    <div class="form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-12" >
+                                                                                <h3>判断题</h3>
+                                                                                <ol>
+                                                                                    <li ng-repeat="x in pQList" style="font-weight: bold;font-size: 18px;">
+                                                                                        <small>{{x.question}}</small>
+                                                                                        <input ng-if="x.isSelected==true" checked type="checkbox" style="float: right;width: 16px;height: 16px;" value="{{x.eq_id}}"  ng-click="questionClick(x.eq_id)" name="check1" >
+                                                                                        <input ng-if="x.isSelected==false" type="checkbox" style="float: right;width: 16px;height: 16px;" value="{{x.eq_id}}"  ng-click="questionClick(x.eq_id)" name="check1" >
+                                                                                    </li>
+                                                                                </ol>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-12" >
+                                                                                <h3>单选题</h3>
+                                                                                <ol>
+                                                                                    <li ng-repeat="y in xQList" style="font-weight: bold;font-size: 18px;">
+                                                                                        <small>{{y.question}}</small>
+                                                                                        <input ng-if="y.isSelected==true" checked type="checkbox" style="float: right;width: 16px;height: 16px;" value="{{y.eq_id}}"  ng-click="questionClick(y.eq_id)" name="check2" >
+                                                                                        <input ng-if="y.isSelected==false" type="checkbox" style="float: right;width: 16px;height: 16px;" value="{{y.eq_id}}"  ng-click="questionClick(y.eq_id)" name="check2" >
+                                                                                    </li>
+                                                                                </ol>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer" style="text-align: center">
+                                                                    <button type="button" ng-click="changeQListClick()" class="btn btn-primary" >确认</button>
+                                                                    <!--<button type="button" class="btn btn-primary" ng-disabled="addForm.$invalid" ng-click="addBtn()">确认新建</button>-->
+                                                                </div>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </form>
-                             
+
                                 <div class="tab-content">
                                     <div id="tab-1" class="tab-pane active">
                                         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="full-height-scroll" style="overflow: hidden; width: auto; height: 100%;">
@@ -281,7 +337,6 @@
                                                         <td>
                                                             <a target="_self" href="article_update.html?article_id={{x.article_id}}&user_id={{x.user_id}}" title="修改" style="margin-right: 12px;"><i class="fa fa-pencil-square-o" ></i></a>
                                                             <a title="删除" ng-click="deletearticle(x.article_id)" style="margin-right: 12px;"><i class="fa fa-trash" ></i></a>
-                                                            <!-- <a title="驳回" ng-click="bohuiClick(x.article_id)" style="margin-right: 12px;"><i class="fa fa-stop" ></i></a> -->
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -336,6 +391,7 @@
                                                             <!--<a title="驳回" ng-click="bohuiClick(x.article_id)" style="margin-right: 12px;"><i class="fa fa-stop" ></i></a>-->
                                                             <!-- <a title="通过" ng-click="tongguoClick(x.article_id)"><i class="fa fa-angellist" ></i></a> -->
                                                             <a title="分配必修课程给员工" ng-click="noshitiClick(x.article_id)" style="margin-right: 12px;" data-toggle="modal" data-target="#myModal"><i class="fa fa-clipboard" ></i></a>
+                                                            <a title="关联试题"  ng-click="setExamQuestion(x.article_id)" style="margin-right: 12px;" data-toggle="modal" data-target="#myModal2"><i class="fa fa-stop" ></i></a>
                                                         </td>
                                                     </tr>
                                                     </tbody>

@@ -123,8 +123,7 @@ app.controller('myCtrl',
                 }
             }
 
-
-            //选择试题
+            //选择员工
             $scope.noshitiClick=function (article_id) {
                 $http.get("http://localhost:8222/cadre?page=1&limit=1000")
                     .then(function (res) {
@@ -309,6 +308,7 @@ app.controller('myCtrl',
             }
         }
 
+        //员工
         function addUser(data) {
             console.log('add User')
             $http({
@@ -337,7 +337,7 @@ app.controller('myCtrl',
                     return {
                         user_id: item.user_id,
                         article_id: item.article_id,
-                        us_id: item.us_id
+                        us_id: item.us_id   
                     }
                 }) //TODO
                 console.log($scope.selectedUserIdList)
@@ -361,5 +361,139 @@ app.controller('myCtrl',
                 })
                 console.log($scope.user)
             })
+        }
+
+
+        // 练习题
+        $scope.setExamQuestion = function(article_id){
+            $http.get("http://localhost:8222/exam/question?page=1&limit=1000")
+            .then(function (res) {
+                $scope.qList = res.data.rows
+                $scope.qListLength = $scope.qList.length
+                getQListForArticle(article_id)
+            });
+        }
+
+        $scope.questionClick = function (id) {
+            console.log('start')
+            console.log($scope.removeQList)
+            console.log($scope.addQList)
+            const item = $scope.selectedQList.find(function(sItem){
+                return sItem.eq_id === id
+            })
+            if(item){
+                // 有 item - remove
+                const removeItem = $scope.removeQList.find(function(sItem){
+                    return sItem.eq_id === id
+                })
+                if(removeItem){
+                    //已经添加 - 删除
+                    $scope.removeQList = $scope.removeQList.filter(function(sItem){
+                        return sItem.eq_id !== id
+                    })
+                }
+                else{
+                    $scope.removeQList.push(item)
+                }
+            }
+            else { //没有 - 添加
+                const addItem = $scope.addQList.find(function(sItem){
+                    return sItem.eq_id === id
+                })
+                if(addItem){
+                    //已经添加 - 删除
+                    $scope.addQList = $scope.addQList.filter(function(sItem){
+                        return sItem.eq_id !== id
+                    })
+                }
+                else{
+                    $scope.addQList.push({eq_id: id})
+                }
+            }
+            console.log('end')
+            console.log($scope.removeQList)
+            console.log($scope.addQList)
+        }
+
+        $scope.changeQListClick = function () {
+            //add question
+            for(var i=0; i<$scope.addQList.length; i++){
+                const data = {
+                    eq_id: $scope.addQList[i].eq_id,
+                }
+                addQuestion($scope.xubangdaingId, data)
+            }
+            //remove question
+            for(var i=0; i<$scope.removeQList.length; i++){
+                delQuestion($scope.xubangdaingId, {eq_id: $scope.removeQList[i].eq_id})
+            }
+        }
+
+        function addQuestion(article_id, data) {
+            console.log('add Question')
+            $http({
+                method: 'post',
+                url: 'http://localhost:8222/article/' + article_id + '/question',
+                data: $.param(data),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            }).success(function (req) {
+                window.location.href='article_home.html'
+            })
+        }
+
+        function delQuestion(article_id, data){
+            console.log('del question')
+            $http({
+                method: 'delete',
+                url: 'http://localhost:8222/article/' + article_id + '/question',
+                data: $.param(data),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            }).success(function (req) {
+                window.location.href='article_home.html'
+            })
+        }
+
+
+        function getQListForArticle(article_id){
+            console.log('getQListForArticle by article_id')
+            $http.get("http://localhost:8222/article/"+ article_id + "/question?limit=1000")
+            .then(function (res) {
+                $scope.selectedQList = res.data.rows.map(function(item){
+                    return {
+                        eqt_id: item.eqt_id,
+                        article_id: article_id,
+                        eq_id: item.eq_id,
+                        question: item.question
+                    }
+                }) //TODO
+                console.log($scope.selectedQList)
+                $scope.removeQList = [] //TODO
+                $scope.addQList = [] //TODO
+                $scope.xubangdaingId=article_id
+                $scope.qList = $scope.qList.map(function(item){
+                    const selectedItem = $scope.selectedQList.find(function(sItem){
+                        return sItem.eq_id === item.eq_id
+                    })
+                    console.log('-----')
+                    console.log(selectedItem)
+                    console.log('-----')
+                    if(selectedItem){
+                        item.isSelected = true
+                    }
+                    else{
+                        item.isSelected = false
+                    }
+                    return item
+                })
+                console.log($scope.qList)
+                //判断
+                $scope.pQList = $scope.qList.filter(function(item){
+                    return item.eqt_id === 1
+                })
+                //单选
+                $scope.xQList = $scope.qList.filter(function(item){
+                    return item.eqt_id === 2
+                })
+            })   
         }
     });
