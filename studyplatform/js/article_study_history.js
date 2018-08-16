@@ -5,6 +5,8 @@ app.controller('myCtrl',
         $scope.username=Request.xingming;
         localStorage.setItem("login_user_name",$scope.username);
         $scope.login_user_name=localStorage.getItem("login_user_name");
+        $scope.user_id = decodeURI(Request.user_id);
+        $scope.user_name= decodeURI(Request.user_name);
         $scope.page=1;
         $scope.load=function(){
             getshuju($scope.page);
@@ -22,10 +24,36 @@ app.controller('myCtrl',
             }
             //获取数据api
             function getshuju(pageID) {
+                const mockDataList = [
+                    {
+                        article_id: 1,
+                        period: 3,
+                        title:'选修课程01',
+                        coursetype: 1, //选修
+                        created: Date.now()
+                    },
+                    {
+                        article_id: 2,
+                        period: 5,
+                        title:'必修课程02',
+                        coursetype: 2, //选修
+                        created: Date.now()
+                    },
+                    {
+                        article_id: 3,
+                        period: 2,
+                        title:'付费课程03',
+                        coursetype: 3, //选修
+                        created: Date.now()
+                    }
+                ]
                 $http.get("http://localhost:8222/cadre?page="+$scope.page)
                     .then(function (res) {
-                        $scope.lists=res.data.rows;
-                        $scope.total=res.data.total;
+                        $scope.lists=mockDataList.map(function(study){
+                            study.type = study.coursetype === 1 ? '选修课' : study.coursetype === 2 ? '必修课' : '付费课程'
+                            return study
+                        })
+                        $scope.total=$scope.lists.length;
                         $scope.pagesLists=Math.ceil($scope.total/10);
                     });
             }
@@ -44,6 +72,7 @@ app.controller('myCtrl',
             }
 
         }
+
 
 
 

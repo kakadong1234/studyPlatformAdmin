@@ -5,6 +5,8 @@ app.controller('myCtrl',
         $scope.username=Request.xingming;
         localStorage.setItem("login_user_name",$scope.username);
         $scope.login_user_name=localStorage.getItem("login_user_name");
+        $scope.user_id = decodeURI(Request.user_id);
+        $scope.user_name = decodeURI(Request.user_name);
         $scope.page=1;
         $scope.load=function(){
             getshuju($scope.page);
@@ -22,11 +24,37 @@ app.controller('myCtrl',
             }
             //获取数据api
             function getshuju(pageID) {
-                $http.get("http://localhost:8222/cadre?page="+$scope.page)
+                // const mockDataList = [
+                //     {
+                //         er_id: 1,
+                //         ep_name: '考试01',
+                //         ep_type: '一试一卷',
+                //         ep_limit: 60
+                //     },
+                //     {
+                //         er_id: 2,
+                //         ep_name: '考试02',
+                //         ep_type: '一人一卷',
+                //         ep_limit: 90
+                //     },
+                //     {
+                //         er_id: 3,
+                //         ep_name: '考试03',
+                //         ep_type: '一试一卷',
+                //         ep_limit: 66
+                //     }
+                // ]
+                $http.get('http://localhost:8222/exam/result?user_id=' + $scope.user_id)
                     .then(function (res) {
-                        $scope.lists=res.data.rows;
-                        $scope.total=res.data.total;
-                        $scope.pagesLists=Math.ceil($scope.total/10);
+                        console.log(res)
+                        $scope.lists = res.data.rows.map(function(item){
+                            item.ep_name = item.plan.ep_name;
+                            item.ep_type = item.plan.ep_type;
+                            item.er_state_txt = item.er_state === 2 ? '考试中' : '已考完'
+                            return item;
+                        });
+                        $scope.total = $scope.lists.length;
+                        $scope.pagesLists = Math.ceil($scope.total/10);
                     });
             }
 
@@ -44,8 +72,6 @@ app.controller('myCtrl',
             }
 
         }
-
-
 
         $scope.onClick = function (user_id) {
             // window.location.href="zhucunganbu_detail.html?user_id="+user_id;

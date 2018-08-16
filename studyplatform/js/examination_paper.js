@@ -173,7 +173,7 @@ app.controller('myCtrl',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }).success(function (req) {
                 // window.history.go(-1);
-                window.location.href = "examination_paper_list.html";
+                // window.location.href = "examination_paper_list.html";
             })
         }
 
