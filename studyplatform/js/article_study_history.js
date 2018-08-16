@@ -24,33 +24,36 @@ app.controller('myCtrl',
             }
             //获取数据api
             function getshuju(pageID) {
-                const mockDataList = [
-                    {
-                        article_id: 1,
-                        period: 3,
-                        title:'选修课程01',
-                        coursetype: 1, //选修
-                        created: Date.now()
-                    },
-                    {
-                        article_id: 2,
-                        period: 5,
-                        title:'必修课程02',
-                        coursetype: 2, //选修
-                        created: Date.now()
-                    },
-                    {
-                        article_id: 3,
-                        period: 2,
-                        title:'付费课程03',
-                        coursetype: 3, //选修
-                        created: Date.now()
-                    }
-                ]
-                $http.get("http://localhost:8222/cadre?page="+$scope.page)
+                // const mockDataList = [
+                //     {
+                //         article_id: 1,
+                //         period: 3,
+                //         title:'选修课程01',
+                //         coursetype: 1, //选修
+                //         created: Date.now()
+                //     },
+                //     {
+                //         article_id: 2,
+                //         period: 5,
+                //         title:'必修课程02',
+                //         coursetype: 2, //选修
+                //         created: Date.now()
+                //     },
+                //     {
+                //         article_id: 3,
+                //         period: 2,
+                //         title:'付费课程03',
+                //         coursetype: 3, //选修
+                //         created: Date.now()
+                //     }
+                // ]
+                $http.get("http://localhost:8222/studyResult?user_id=" + $scope.user_id)
                     .then(function (res) {
-                        $scope.lists=mockDataList.map(function(study){
-                            study.type = study.coursetype === 1 ? '选修课' : study.coursetype === 2 ? '必修课' : '付费课程'
+                        console.log(res)
+                        $scope.lists = res.data.data.rows.map(function(study){
+                            study.type = study.article.coursetype === 1 ? '选修课' : study.article.coursetype === 2 ? '必修课' : '付费课程'
+                            study.title = study.article.title
+                            study.period = study.article.period
                             return study
                         })
                         $scope.total=$scope.lists.length;
